@@ -250,6 +250,18 @@ footer {
     justify-self: flex-end;
 }
 
+/* win / lose image section */
+
+#win-lose-img {
+    margin: 5px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#win-lose-img img {
+    width: 300px;
+}
+
 
 
 
