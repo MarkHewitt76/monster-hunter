@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- landing header -->
-    <header id="landing-header" class="header mutable">
+    <header id="landing-header" class="header mutable hidden">
         <h3>Nathan &amp; Caoimhin's</h3>
         <h1>Monster</h1> <h1>Hunter</h1>
     </header>
@@ -292,22 +292,26 @@
 
         <!-- main game section -->
         <div id="game-main" class="mutable">
+            <!-- game section header -->
+            <header id="game-header" class="header mutable">
+                <h3>Monster Hunter</h3>
+            </header>
             <!-- restart and quit buttons -->
             <div id="arena-btns">
                 <button id="restart-btn" class="btn">Start Over</button>
                 <button id="quit-btn" class="btn">Quit</button>
             </div>
             <!-- score area -->
-            <div class="score-area">
-                <h3 class="scores">LEVEL: <span id="score">1</span></h3>
-                <h3 class="scores">Attempts Remaining: <span id="incorrect">3</span></h3>
+            <div id="score-area">
+                <h3 class="scores">LEVEL: <span id="level">1</span></h3>
+                <h3 class="scores">Attacks Remaining: <span id="attacks">3</span></h3>
             </div>
             <!-- game message section -->
             <div id="arena-message">
                 <p>
                     You are hunting <span class="monster-name">${monsterName}</span>
                 </p>
-                <button id="next-level-btn" class="btn mutable">Next Level</button>
+                <button id="next-level-btn" class="btn mutable hidden">Next Level</button>
             </div>
             <!-- arena -->
             <div id="arena" class="mutable">
@@ -315,13 +319,14 @@
                 <div id="monster" class="arena-box">
                     <!-- monster image -->
                     <div id="monster-img">
-                        <img src="assets/images/demon.jpg" alt="">
+                        <img src="assets/images/demon.jpg" alt="" width="200px">
                     </div>
                     <!-- monster weaknesses (hidden) -->
                     <div id="monster-weakness"></div>
                 </div>
                 <!-- weapons buttons -->
                 <div id="weapons-list" class="arena-box">
+                    <h4>Choose Your Weapon</h4>
                     <div id="dagger" class="weapon btn">
                         <p>Dagger</p>
                         <img src="assets/images/dagger.jpg" alt="Drawing of a dagger by Nathan">

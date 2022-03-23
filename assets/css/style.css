@@ -144,6 +144,114 @@ footer {
     margin: 2.5px;
 }
 
+/* main game section */
+
+#game-header h3 {
+    font-family: 'Eater', cursive;
+    color: #ff0000;
+    font-weight: 400;
+}
+
+/* restart and quit buttons */
+
+#arena-btns {
+    display: flex;
+    justify-content: center;
+}
+
+/* scores */
+
+#score-area {
+    margin: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.scores {
+    font-family: 'Eater', cursive;
+    font-weight: 400;
+}
+
+#level, #attacks {
+    font-family: 'Kalam', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#level {
+    color: #54E014;
+}
+
+#attacks {
+    color: #ff0000;
+}
+
+/* game message section */
+
+#arena-message {
+    margin: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.monster-name {
+    font-family: 'Eater', cursive;
+}
+
+/* arena */
+
+.arena-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* monster details */
+
+#monster-img {
+    margin: 10px 0;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#monster-weakness {
+    display: none;
+}
+
+/* weapons buttons */
+
+#weapons-list h4 {
+    font-family: 'Eater', cursive;
+    font-weight: 400;
+    color: #54E014;
+}
+
+.weapon {
+    margin: 2.5px 10px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weapon p {
+    width: 250px;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.weapon img {
+    width: 50px;
+    justify-self: flex-end;
+}
+
+
+
 
 
 /* media queries */
@@ -154,6 +262,16 @@ footer {
     /* rules section */
     .rules-weapon-img img {
         height: 42.5px;
+    }
+
+    /* main game section */
+
+    .scores {
+        font-size: 1rem;
+    }
+
+    #level, #attacks {
+        font-size: 1.5rem;
     }
 
     /* footer */
