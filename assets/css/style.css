@@ -43,7 +43,7 @@ h1 {
     cursor: pointer;
 }
 
-.hidden * {
+.hidden {
     display: none;
 }
 
@@ -83,33 +83,6 @@ footer {
     color: #000;
 }
 
-/* rules section */
-
-#rules {
-    margin: 30px;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#rules ol {
-    list-style: none;
-    text-align: center;
-}
-
-.rules-weapon-img {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.rules-weapon-img img {
-    height: 75px;
-    margin: 2.5px;
-}
-
 /* meet the monsters section */
 
 #all-monsters {
@@ -118,6 +91,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: none;
 }
 
 #all-monsters h3 {
@@ -142,6 +116,34 @@ footer {
     width: 150px;
 }
 
+/* rules section */
+
+#rules {
+    margin: 30px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+#rules ol {
+    list-style: none;
+    text-align: center;
+}
+
+.rules-weapon-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.rules-weapon-img img {
+    height: 75px;
+    margin: 2.5px;
+}
+
 
 
 /* media queries */
@@ -152,6 +154,11 @@ footer {
     /* rules section */
     .rules-weapon-img img {
         height: 42.5px;
+    }
+
+    /* footer */
+    footer {
+        font-size: 0.75rem;
     }
 }
 

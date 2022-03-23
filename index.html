@@ -17,8 +17,8 @@
     </header>
 
     <main>
-        <!-- landing main -->
-        <div id="landing-main" class="mutable">
+        <!-- landing main section -->
+        <div id="landing-main" class="mutable hidden">
             <!-- landing buttons -->
             <div id="landing-buttons">
                 <button id="monsters-btn" class="btn">Meet the Monsters</button>
@@ -27,7 +27,7 @@
             </div>
 
             <!-- meet the monsters section -->
-            <div id="all-monsters" class="mutable-inner hidden">
+            <div id="all-monsters" class="mutable-inner hidden-div">
                 <!-- table of level 1 monsters -->
                 <h3>Level 1 (Novice) Monsters</h3>
                 <table id="level-one-monsters" class="monster-table">
@@ -229,7 +229,7 @@
             </div>
 
             <!-- game rules -->
-            <div id="rules" class="mutable-inner hidden">
+            <div id="rules" class="mutable-inner">
                 <h2>Game Rules</h2>
                 <ul>
                     <li>
@@ -242,7 +242,7 @@
                             <img src="assets/images/sword.jpg" alt="Drawing of a sword by Nathan">
                             <img src="assets/images/axe.jpg" alt="Drawing of an axe by Nathan">
                             <img src="assets/images/bow_arrow.jpg" alt="Drawing of a bow and arrow by Nathan">
-                            <img src="assets/images/ice_arrow.jpg" alt="Drawing of an ice arrow by Nathan">
+                            <img src="assets/images/ice_arrow.jpg" alt="Drawing of an ice-tipped arrow by Nathan">
                         </div>
                         <ol>
                             <li>1. A Dagger</li>
@@ -251,7 +251,7 @@
                             <li>4. A Bow &amp; Arrow</li>
                             <li>5. An Ice-Tipped Arrow</li>
                             <li>6. A Poisoned Blade</li>
-                            <li>7. A Flame axe</li>
+                            <li>7. A Flame Axe</li>
                             <li>8. A Pistol</li>
                             <li>9. A Sub-Machine Gun</li>
                             <li>10. A Shotgun</li>
@@ -287,6 +287,82 @@
                     </li>
                 </ul>
                 <h2>Good Hunting!</h2>
+            </div>
+        </div>
+
+        <!-- main game section -->
+        <div id="game-main" class="mutable">
+            <!-- restart and quit buttons -->
+            <div id="arena-btns">
+                <button id="restart-btn" class="btn">Start Over</button>
+                <button id="quit-btn" class="btn">Quit</button>
+            </div>
+            <!-- score area -->
+            <div class="score-area">
+                <h3 class="scores">LEVEL: <span id="score">1</span></h3>
+                <h3 class="scores">Attempts Remaining: <span id="incorrect">3</span></h3>
+            </div>
+            <!-- game message section -->
+            <div id="arena-message">
+                <p>
+                    You are hunting <span class="monster-name">${monsterName}</span>
+                </p>
+                <button id="next-level-btn" class="btn mutable">Next Level</button>
+            </div>
+            <!-- arena -->
+            <div id="arena" class="mutable">
+                <!-- monster details -->
+                <div id="monster" class="arena-box">
+                    <!-- monster image -->
+                    <div id="monster-img">
+                        <img src="assets/images/demon.jpg" alt="">
+                    </div>
+                    <!-- monster weaknesses (hidden) -->
+                    <div id="monster-weakness"></div>
+                </div>
+                <!-- weapons buttons -->
+                <div id="weapons-list" class="arena-box">
+                    <div id="dagger" class="weapon btn">
+                        <p>Dagger</p>
+                        <img src="assets/images/dagger.jpg" alt="Drawing of a dagger by Nathan">
+                    </div>
+                    <div id="sword" class="weapon btn">
+                        <p>Sword</p>
+                        <img src="assets/images/sword.jpg" alt="Drawing of a sword by Nathan">
+                    </div>
+                    <div id="axe" class="weapon btn">
+                        <p>Axe</p>
+                        <img src="assets/images/axe.jpg" alt="Drawing of an axe by Nathan">
+                    </div>
+                    <div id="bow-arrow" class="weapon btn">
+                        <p>Bow &amp; Arrow</p>
+                        <img src="assets/images/bow_arrow.jpg" alt="Drawing of a bow and arrow by Nathan">
+                    </div>
+                    <div id="ice-arrow" class="weapon btn">
+                        <p>Ice-Tipped Arrow</p>
+                        <img src="assets/images/ice_arrow.jpg" alt="Drawing of an ice-tipped arrow by Nathan">
+                    </div>
+                    <div id="poison-blade" class="weapon btn">
+                        <p>Poisoned Blade</p>
+                        <img src="assets/images/poison_blade.jpg" alt="Drawing of a poisoned blade by Nathan">
+                    </div>
+                    <div id="flame-axe" class="weapon btn">
+                        <p>Flame Axe</p>
+                        <img src="assets/images/flame_axe.jpg" alt="Drawing of a flame axe by Nathan">
+                    </div>
+                    <div id="pistol" class="weapon btn">
+                        <p>Pistol</p>
+                        <img src="assets/images/pistol.jpg" alt="Drawing of a pistol by Nathan">
+                    </div>
+                    <div id="smg" class="weapon btn">
+                        <p>Sub-Machine Gun</p>
+                        <img src="assets/images/smg.jpg" alt="Drawing of a sub-machine gun by Nathan">
+                    </div>
+                    <div id="shotgun" class="weapon btn">
+                        <p>Shotgun</p>
+                        <img src="assets/images/shotgun.jpg" alt="Drawing of a shotgun by Nathan">
+                    </div>
+                </div>
             </div>
         </div>
     </main>
