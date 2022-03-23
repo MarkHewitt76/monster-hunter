@@ -1,0 +1,80 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Eater&family=Kalam:wght@400;700&display=swap');
+
+/* Global styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: 'Kalam', cursive;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    margin: 20px 10px;
+}
+
+h1 {
+    font-family: 'Eater', cursive;
+}
+
+.btn {
+    width: 150px;
+    margin: 5px;
+    padding: 5px;
+    background: #000;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-family: 'Kalam', cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    margin: 20px 10px;
+    font-size: 1rem;
+    line-height: 20px;
+}
+
+/* landing styles */
+
+#landing-header h1 {
+    font-size: 3.25rem;
+    color: #ff0000;
+    line-height: 100%;
+}
+
+#landing-header h3 {
+    font-size: 1.75rem;
+    color: #54E014;
+}
+
+#landing-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#start-btn {
+    width: 200px;
+    background: #fff;
+    font-family: 'Eater', cursive;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+
