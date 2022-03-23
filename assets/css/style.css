@@ -43,6 +43,10 @@ h1 {
     cursor: pointer;
 }
 
+.hidden * {
+    display: none;
+}
+
 footer {
     text-align: center;
     margin: 20px 10px;
@@ -106,12 +110,45 @@ footer {
     margin: 2.5px;
 }
 
+/* meet the monsters section */
+
+#all-monsters {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#all-monsters h3 {
+    margin-top: 20px;
+    text-decoration: underline;
+}
+
+#all-monsters a {
+    color: #fff;
+}
+
+.monster-table td {
+    padding: 5px 10px;
+    font-family: 'Eater', cursive;
+}
+
+.monster-table th:nth-of-type(3), .monster-table td:nth-of-type(3) {
+    display: none;
+} 
+
+.monster-table img {
+    width: 150px;
+}
+
 
 
 /* media queries */
 
 /* for screens less than 640 pixels wide */
 @media screen and (max-width: 639px) {
+    
     /* rules section */
     .rules-weapon-img img {
         height: 42.5px;
