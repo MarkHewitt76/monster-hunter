@@ -219,11 +219,16 @@ function failureMessage1(weapon) {
     message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster is now hunting you!`;
 
     let image = document.getElementById("monster-img").children[0];
-    image.style.width = "250px";
+    image.style.width = "200px";
 }
 
 function failureMessage2(weapon) {
+    let monsterName = document.getElementById("monster-name").innerHTML;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster almost had you that time!`;
 
+    let image = document.getElementById("monster-img").children[0];
+    image.style.width = "250px";
 }
 
 function defeatMessage(weapon) {
