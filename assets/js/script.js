@@ -1,6 +1,7 @@
 // Wait for the DOM to finish loading before running
 // Get the elements with a class of "btn" & add event listeners to them
 document.addEventListener("DOMContentLoaded", function() {
+    hideMutableChildren();
     let buttons = document.getElementsByClassName("btn");
 
     for (let button of buttons) {
@@ -44,9 +45,22 @@ function hideMutableChildren() {
     }
 }
 
-
 function startGame() {
+    hideMainDivs();
+    let mainGame = document.getElementById("game-main");
+    let arena = document.getElementById("arena");
+    mainGame.style.display = "";
+    arena.style.display = "";
     console.log('start game');
+}
+
+function hideMainDivs() {
+    let hiddenDivs = document.getElementsByClassName("mutable");
+    for (let mutableDiv of hiddenDivs) {
+        if (mutableDiv.style.display !== "none") {
+            mutableDiv.style.display = "none";
+        }
+    }
 }
 
 function getMonsterArray() {
@@ -110,5 +124,11 @@ function incrementLevel() {
 }
 
 function quit() {
+    hideMutableChildren();
+    hideMainDivs();
+    let landing = document.getElementById("landing-main");
+    let landingHeader = document.getElementById("landing-header");
+    landing.style.display = "";
+    landingHeader.style.display = "";
     console.log('quit');
 }
