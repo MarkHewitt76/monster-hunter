@@ -189,8 +189,7 @@ footer {
 #arena-message {
     margin: 5px 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -215,6 +214,10 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#monster-img img {
+    width: 200px;
 }
 
 #monster-weakness {

@@ -142,11 +142,27 @@ function getRandomMonster() {
 }
 
 /**
- * 
+ * Takes the monster object returned by getRandomMonster
+ * and writes it to the DOM
  */
 function displayRandomMonster() {
-    let randomMonster = getRandomMonster();
-    console.log(randomMonster);
+    let monster = getRandomMonster();
+
+    let monsterName = monster.name;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `You are hunting the <span class="monster-name">${monsterName}</span> monster!`;
+
+    let image = document.getElementById("monster-img");
+    image.innerHTML = monster.image;
+
+    let monsterWeakness = document.getElementById("monster-weakness");
+    let paragraphs = "";
+    for (let i of monster.weakness) {
+        paragraphs += `<p>${i}</p>`;
+    }
+    monsterWeakness.innerHTML = paragraphs;
+
+
 }
 
 function resolveBattle(weapon) {
