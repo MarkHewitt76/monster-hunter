@@ -186,13 +186,31 @@ function resolveBattle(weapon) {
     }
 }
 
+/**
+ * Reduces the number of remaining attacks by 1.
+ */
 function decrementAttacks() {
     let attacks = parseInt(document.getElementById("attacks").textContent);
     document.getElementById("attacks").textContent = --attacks;
 }
 
+/**
+ * Calls for the failure message displayed by the 
+ * functions below, based on the number of remaining
+ * attacks.
+ */
 function displayFailureMessage() {
-    console.log('LOSER!');
+    let attacks = document.getElementById("attacks").textContent;
+    if (attacks === "2") {
+        failureMessage1();
+    } else if (attacks === "1") {
+        failureMessage2();
+    } else if (attacks === "0") {
+        defeatMessage();
+    } else {
+        alert(`Error! Undefined number: ${attacks}. Please refresh the page.`);
+        throw `Error! Undefined number: ${attacks}. Aborting!`;
+    }
 }
 
 function failureMessage1() {
@@ -207,8 +225,22 @@ function defeatMessage() {
 
 }
 
+/**
+ * Calls for the success message displayed by the 
+ * functions below, based on the current level.
+ */
 function displayWinMessage() {
-    console.log('Winner!');
+    let level = document.getElementById("level").textContent;
+    if (level === "1") {
+        winMessage1();
+    } else if (level === "2") {
+        winMessage2();
+    } else if (level === "3") {
+        victoryMessage();
+    } else {
+        alert(`Error! Undefined level: ${level}. Please refresh the page.`);
+        throw `Error! Undefined level: ${level}. Aborting!`;
+    }
 }
 
 function winMessage1() {
@@ -227,6 +259,9 @@ function nextLevel() {
     console.log('next level');
 }
 
+/**
+ * Increases the current level by 1.
+ */
 function incrementLevel() {
     let level = parseInt(document.getElementById("level").textContent);
     document.getElementById("level").textContent = ++level;
