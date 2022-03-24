@@ -302,8 +302,23 @@ function winMessage1(weapon) {
     nextLevelBtn.style.display = "";
 }
 
+/**
+ * Hides the main game area and displays a congratulatory
+ * message and animated gif upon passing level 2. 
+ * Reveals the Next Level button for the user to progress.
+ */
 function winMessage2(weapon) {
+    let monsterName = document.getElementById("monster-name").innerHTML;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `YEAH! Way to handle that <span id="monster-name">${monsterName}</span> monster. Good choice with the <span id="weapon-name">${weapon}</span>! Are you up to taking on one more?`;
 
+    hideMutableChildren();
+    let conratsImage = document.getElementById("win-lose-img");
+    conratsImage.style.display = "";
+    conratsImage.innerHTML = `<img src="assets/images/twirling_xena.gif" alt="An animated image of Xena, warrior princess doing a celebratory twirl">`;
+
+    let nextLevelBtn = document.getElementById("next-level-btn");
+    nextLevelBtn.style.display = "";
 }
 
 function victoryMessage(weapon) {
