@@ -150,11 +150,19 @@ footer {
     font-weight: 400;
 }
 
-/* restart and quit buttons */
+/* restart, next level and quit buttons */
 
 #arena-btns {
     display: flex;
     justify-content: center;
+}
+
+#next-level-btn {
+    width: 200px;
+    background: #fff;
+    font-family: 'Eater', cursive;
+    font-size: 1.5rem;
+    color: #000;
 }
 
 /* scores */

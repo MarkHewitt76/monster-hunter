@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
-            if ((this.id === "start-btn") || (this.id === "restart-btn")) {
+            if ((this.id === "start-btn") || (this.id === "next-level-btn")) {
                 startGame();
             } else if (this.id === "monsters-btn") {
                 displayAllMonsters();
             } else if (this.id === "rules-btn") {
                 displayRules();
-            } else if (this.id === "next-level-btn") {
-                nextLevel();
+            } else if (this.id === "restart-btn") {
+                startOver();
             } else if (this.id === "quit-btn") {
                 quit();
             } else {
@@ -58,21 +58,35 @@ function hideMutableChildren() {
 }
 
 /**
+ * The main game function, called by the click events 
+ * on both the Let's Hunt! and Next Level buttons.
+ * Sets the initial states for the  attacks counter 
+ * and increments the level counter each time it's called. 
  * Displays ONLY the main game section with a
  * random monster written in by displayRandomMonster().
  */
 function startGame() {
     hideMainDivs();
+    hideMutableChildren();
 
     let mainGame = document.getElementById("game-main");
     let arena = document.getElementById("arena");
     mainGame.style.display = "";
     arena.style.display = "";
 
-    document.getElementById("level").textContent = "1";
     document.getElementById("attacks").textContent = "3";
 
+    incrementLevel();
     displayRandomMonster();
+}
+
+/**
+ * Let's the user restart the game from level one.
+ * Called with the 'click' event on the Start Over button.
+ */
+function startOver() {
+    document.getElementById("level").textContent = "0"; 
+    startGame();
 }
 
 /**
@@ -269,8 +283,23 @@ function displayWinMessage(weapon) {
     }
 }
 
+/**
+ * Hides the main game area and displays a congratulatory
+ * message and animated gif upon passing level 1. 
+ * Reveals the Next Level button for the user to progress.
+ */
 function winMessage1(weapon) {
-    
+    let monsterName = document.getElementById("monster-name").innerHTML;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> WORKED! The <span id="monster-name">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?`;
+
+    hideMutableChildren();
+    let conratsImage = document.getElementById("win-lose-img");
+    conratsImage.style.display = "";
+    conratsImage.innerHTML = `<img src="assets/images/angry_skeleton.gif" alt="An animated image of a skeleton in a coffin saying, 'Leave me alone, I'm dead'">`;
+
+    let nextLevelBtn = document.getElementById("next-level-btn");
+    nextLevelBtn.style.display = "";
 }
 
 function winMessage2(weapon) {
@@ -279,10 +308,6 @@ function winMessage2(weapon) {
 
 function victoryMessage(weapon) {
 
-}
-
-function nextLevel() {
-    console.log('next level');
 }
 
 /**
