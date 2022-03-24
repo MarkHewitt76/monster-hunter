@@ -213,6 +213,11 @@ function displayFailureMessage(weapon) {
     }
 }
 
+/**
+ * Displays the outcome of the user's first failed attempt:
+ * gives a warning message and enlarges the image of the
+ * active monster.
+ */
 function failureMessage1(weapon) {
     let monsterName = document.getElementById("monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
@@ -222,6 +227,10 @@ function failureMessage1(weapon) {
     image.style.width = "200px";
 }
 
+/**
+ * Displays the outcome of the user's second failed attempt:
+ * a new warning message and the monster image gets bigger.
+ */
 function failureMessage2(weapon) {
     let monsterName = document.getElementById("monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
@@ -232,7 +241,14 @@ function failureMessage2(weapon) {
 }
 
 function defeatMessage(weapon) {
+    let monsterName = document.getElementById("monster-name").innerHTML;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!`;
 
+    hideMutableChildren();
+    let finalOutcome = document.getElementById("win-lose-img");
+    finalOutcome.style.display = "";
+    finalOutcome.innerHTML = `<img src="assets/images/upset_emoji.gif" alt="An animated emoji, crying and thumping its fists">`;
 }
 
 /**
