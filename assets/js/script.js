@@ -187,7 +187,8 @@ function resolveBattle(weapon) {
 }
 
 function decrementAttacks() {
-    console.log('loser');
+    let attacks = parseInt(document.getElementById("attacks").textContent);
+    document.getElementById("attacks").textContent = --attacks;
 }
 
 function displayFailureMessage() {
@@ -227,7 +228,8 @@ function nextLevel() {
 }
 
 function incrementLevel() {
-
+    let level = parseInt(document.getElementById("level").textContent);
+    document.getElementById("level").textContent = ++level;
 }
 
 /**
