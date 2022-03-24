@@ -16,22 +16,32 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (this.id === "quit-btn") {
                 quit();
             } else {
-                chooseWeapon();
+                let weapon = this.id
+                resolveBattle(weapon);
             }
         })
     }
 })
 
 function displayAllMonsters() {
-    console.log('display monsters');
+    hideMutableChildren();
+    let allMonsters = document.getElementById("all-monsters");
+    allMonsters.style.display = "";
 }
 
 function displayRules() {
-    console.log('display rules');
+    hideMutableChildren();
+    let rules = document.getElementById("rules");
+    rules.style.display = "";
 }
 
-function hideDiv() {
-    
+function hideMutableChildren() {
+    let hiddenElements = document.getElementsByClassName("mutable-child");
+    for (let element of hiddenElements) {
+        if (element.style.display !== "none") {
+            element.style.display = "none";
+        }
+    }
 }
 
 
@@ -51,12 +61,8 @@ function displayRandomMonster() {
 
 }
 
-function chooseWeapon() {
-    console.log('choose weapon');
-}
-
-function resolveBattle() {
-
+function resolveBattle(weapon) {
+    console.log(weapon);
 }
 
 function decrementAttacks() {
