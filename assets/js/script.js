@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /**
  * Displays ONLY the monster tables when the
- * 'Meet the Monsters' button is clicked
+ * 'Meet the Monsters' button is clicked.
  */
 function displayAllMonsters() {
     hideMutableChildren();
@@ -36,7 +36,7 @@ function displayAllMonsters() {
 
 /**
  * Displays ONLY the list of rules when the
- * 'Read the Rules' button is clicked
+ * 'Read the Rules' button is clicked.
  */
 function displayRules() {
     hideMutableChildren();
@@ -46,7 +46,7 @@ function displayRules() {
 
 /**
  * Hides all elements with the class of
- * "mutable-child"
+ * "mutable-child".
  */
 function hideMutableChildren() {
     let hiddenElements = document.getElementsByClassName("mutable-child");
@@ -58,7 +58,8 @@ function hideMutableChildren() {
 }
 
 /**
- * 
+ * Displays ONLY the main game section with a
+ * random monster written in by displayRandomMonster().
  */
 function startGame() {
     hideMainDivs();
@@ -76,7 +77,7 @@ function startGame() {
 
 /**
  * Hides all elements with the class of
- * "mutable"
+ * "mutable".
  */
 function hideMainDivs() {
     let hiddenDivs = document.getElementsByClassName("mutable");
@@ -89,7 +90,7 @@ function hideMainDivs() {
 
 /**
  * Reads a monster table from the DOM based on the 
- * current level and returns it as an array of objects
+ * current level and returns it as an array of objects.
  */
 function getMonsterArray() {
     let table;
@@ -134,7 +135,7 @@ function getMonsterArray() {
 /**
  * Takes the array returned by getMonsterArray()
  * and uses Math.random to return a single,
- * random monster object
+ * random monster object.
  */
 function getRandomMonster() {
     let monsters = getMonsterArray();
@@ -143,7 +144,7 @@ function getRandomMonster() {
 
 /**
  * Takes the monster object returned by getRandomMonster
- * and writes it to the DOM
+ * and writes it to the DOM.
  */
 function displayRandomMonster() {
     let monster = getRandomMonster();
@@ -161,20 +162,36 @@ function displayRandomMonster() {
         paragraphs += `<p>${i}</p>`;
     }
     monsterWeakness.innerHTML = paragraphs;
-
-
 }
 
+/**
+ * Reads the active monster's weaknesses from the DOM,
+ * compares them with the weapon passed in by the 'click'
+ * event listener and calls the appropriate response.
+ */
 function resolveBattle(weapon) {
-    console.log(weapon);
+    let weaknesses = [];
+
+    let paragraphs = document.getElementById("monster-weakness").children;
+    for (let p of paragraphs) {
+        let weakness = p.textContent;
+        weaknesses.push(weakness);
+    }
+    
+    if (weaknesses.includes(weapon) === false) {
+        decrementAttacks();
+        displayFailureMessage();
+    } else {
+        displayWinMessage();
+    }
 }
 
 function decrementAttacks() {
-
+    console.log('loser');
 }
 
 function displayFailureMessage() {
-
+    console.log('LOSER!');
 }
 
 function failureMessage1() {
@@ -190,7 +207,7 @@ function defeatMessage() {
 }
 
 function displayWinMessage() {
-
+    console.log('Winner!');
 }
 
 function winMessage1() {
@@ -213,6 +230,11 @@ function incrementLevel() {
 
 }
 
+/**
+ * Hides all content then displays ONLY
+ * the original landing content.
+ * Simulates reloading the game.
+ */
 function quit() {
     hideMutableChildren();
     hideMainDivs();
