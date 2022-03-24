@@ -254,6 +254,10 @@ function failureMessage2(weapon) {
     image.style.width = "250px";
 }
 
+/**
+ * Hides the main game area and displays a commiseration 
+ * message and animated gif upon losing the game.
+ */
 function defeatMessage(weapon) {
     let monsterName = document.getElementById("monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
@@ -321,8 +325,19 @@ function winMessage2(weapon) {
     nextLevelBtn.style.display = "";
 }
 
+/**
+ * Hides the main game area and displays a congratulatory
+ * message and animated gif upon finishing the game.
+ */
 function victoryMessage(weapon) {
+    let monsterName = document.getElementById("monster-name").innerHTML;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `YEEEEESSSSS! YOU DID IT!! Even the <span id="monster-name">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name">${weapon}</span>! Congratulations on a perfect hunt!`;
 
+    hideMutableChildren();
+    let conratsImage = document.getElementById("win-lose-img");
+    conratsImage.style.display = "";
+    conratsImage.innerHTML = `<img src="assets/images/lit_baby.gif" alt="An animated image of a baby at a sports game, appearing to cheer and fist pump as enthusiastically as any adult fan">`;
 }
 
 /**
@@ -345,5 +360,4 @@ function quit() {
     let landingHeader = document.getElementById("landing-header");
     landing.style.display = "";
     landingHeader.style.display = "";
-    console.log('quit');
 }
