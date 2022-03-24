@@ -354,6 +354,7 @@ function incrementLevel() {
  * Simulates reloading the game.
  */
 function quit() {
+    document.getElementById("level").textContent = "0";
     hideMutableChildren();
     hideMainDivs();
     let landing = document.getElementById("landing-main");
