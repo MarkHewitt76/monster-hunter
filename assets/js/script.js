@@ -151,7 +151,7 @@ function displayRandomMonster() {
 
     let monsterName = monster.name;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `You are hunting the <span class="monster-name">${monsterName}</span> monster!`;
+    message.innerHTML = `You are hunting the <span id="monster-name">${monsterName}</span> monster!`;
 
     let image = document.getElementById("monster-img");
     image.innerHTML = monster.image;
@@ -180,9 +180,9 @@ function resolveBattle(weapon) {
     
     if (weaknesses.includes(weapon) === false) {
         decrementAttacks();
-        displayFailureMessage();
+        displayFailureMessage(weapon);
     } else {
-        displayWinMessage();
+        displayWinMessage(weapon);
     }
 }
 
@@ -199,29 +199,34 @@ function decrementAttacks() {
  * functions below, based on the number of remaining
  * attacks.
  */
-function displayFailureMessage() {
+function displayFailureMessage(weapon) {
     let attacks = document.getElementById("attacks").textContent;
     if (attacks === "2") {
-        failureMessage1();
+        failureMessage1(weapon);
     } else if (attacks === "1") {
-        failureMessage2();
+        failureMessage2(weapon);
     } else if (attacks === "0") {
-        defeatMessage();
+        defeatMessage(weapon);
     } else {
         alert(`Error! Undefined number: ${attacks}. Please refresh the page.`);
         throw `Error! Undefined number: ${attacks}. Aborting!`;
     }
 }
 
-function failureMessage1() {
+function failureMessage1(weapon) {
+    let monsterName = document.getElementById("monster-name").innerHTML;
+    let message = document.getElementById("arena-message").children[0];
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster is now hunting you!`;
+
+    let image = document.getElementById("monster-img").children[0];
+    image.style.width = "250px";
+}
+
+function failureMessage2(weapon) {
 
 }
 
-function failureMessage2() {
-
-}
-
-function defeatMessage() {
+function defeatMessage(weapon) {
 
 }
 
@@ -229,29 +234,29 @@ function defeatMessage() {
  * Calls for the success message displayed by the 
  * functions below, based on the current level.
  */
-function displayWinMessage() {
+function displayWinMessage(weapon) {
     let level = document.getElementById("level").textContent;
     if (level === "1") {
-        winMessage1();
+        winMessage1(weapon);
     } else if (level === "2") {
-        winMessage2();
+        winMessage2(weapon);
     } else if (level === "3") {
-        victoryMessage();
+        victoryMessage(weapon);
     } else {
         alert(`Error! Undefined level: ${level}. Please refresh the page.`);
         throw `Error! Undefined level: ${level}. Aborting!`;
     }
 }
 
-function winMessage1() {
+function winMessage1(weapon) {
     
 }
 
-function winMessage2() {
+function winMessage2(weapon) {
 
 }
 
-function victoryMessage() {
+function victoryMessage(weapon) {
 
 }
 

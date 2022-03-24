@@ -193,8 +193,13 @@ footer {
     text-align: center;
 }
 
-.monster-name {
+#monster-name {
     font-family: 'Eater', cursive;
+}
+
+#weapon-name {
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 /* arena */
@@ -203,6 +208,10 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#weapons-list a {
+    text-decoration: none;
 }
 
 /* monster details */
