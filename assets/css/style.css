@@ -30,6 +30,15 @@ a {
     text-decoration: none;
 }
 
+footer {
+    text-align: center;
+    margin: 20px 10px;
+    font-size: 1rem;
+    line-height: 20px;
+}
+
+/* generic button styles */
+
 .btn {
     width: 150px;
     margin: 5px;
@@ -47,15 +56,13 @@ a {
     cursor: pointer;
 }
 
-.hidden {
-    display: none;
-}
-
-footer {
-    text-align: center;
-    margin: 20px 10px;
-    font-size: 1rem;
-    line-height: 20px;
+.start-btn {
+    width: 200px;
+    height: 50px;
+    background: #fff;
+    font-family: 'Eater', cursive;
+    font-size: 1.5rem;
+    color: #000;
 }
 
 /* landing area styles */
@@ -63,6 +70,7 @@ footer {
 #landing-header h1 {
     font-size: 3.25rem;
     color: #ff0000;
+    font-weight: 400;
     line-height: 100%;
 }
 
@@ -76,10 +84,10 @@ footer {
 #landing-buttons {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
-#start-btn {
+.start-btn {
     width: 200px;
     background: #fff;
     font-family: 'Eater', cursive;
@@ -153,10 +161,21 @@ footer {
 
 /* main game section */
 
-#game-header h3 {
+#game-header h2 {
     font-family: 'Eater', cursive;
     color: #ff0000;
     font-weight: 400;
+    line-height: 100%;
+}
+
+#game-header h4 {
+    color: #54E014;
+}
+
+#game-landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* restart, next level and quit buttons */
@@ -164,7 +183,18 @@ footer {
 .arena-btns {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+}
+
+#game-start {
+    width: 300px;
+    height: 50px;
+}
+
+#go-back {
+    margin-top: 20px;
+    height: 30px;
+    display: block;
 }
 
 #next-level-btn {

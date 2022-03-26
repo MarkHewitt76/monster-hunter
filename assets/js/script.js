@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
-            if ((this.id === "start-btn") || (this.id === "next-level-btn")) {
+            if ((this.id === "game-start") || (this.id === "next-level-btn")) {
                 startGame();
             } else if (this.id === "monsters-btn") {
                 displayAllMonsters();
