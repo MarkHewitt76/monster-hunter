@@ -127,14 +127,12 @@
             </div>
             <!-- arena -->
             <div id="arena" class="mutable-element">
-                <!-- monster details -->
-                <div class="arena-box">
-                    <!-- monster image -->
-                    <div id="active-monster-img"></div>
+                <div class="arena-btns">
+                    <!-- choose weapon button -->
+                    <button id="choose-weapon-btn" class="btn">Choose Your Weapon</button>
                 </div>
                 <!-- weapons buttons -->
-                <div id="weapons-list" class="arena-box">
-                    <h4>Choose Your Weapon</h4>
+                <div id="weapons-list" class="arena-box mutable-element" style="display: none;">
                     <a href="#game-header">
                         <div id="dagger" class="weapon btn">
                             <p>Dagger</p>
@@ -196,7 +194,11 @@
                         </div>
                     </a>
                 </div>
-            </a>
+                <!-- active monster image container -->
+                <div class="arena-box">
+                    <!-- active monster image -->
+                    <div id="active-monster-img"></div>
+                </div>
             </div>
             <!-- win / lose image section -->
             <div id="win-lose-img" class="mutable-element"></div>

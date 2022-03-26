@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 displayAllMonsters();
             } else if (this.id === "rules-btn") {
                 displayRules();
+            } else if (this.id === "choose-weapon-btn") {
+                displayWeapons();
             } else if (this.id === "restart-btn") {
                 startOver();
             } else if (this.id === "quit-btn") {
@@ -287,6 +289,16 @@ function displayRandomMonster() {
 
     let image = document.getElementById("active-monster-img");
     image.innerHTML = monster.image;
+}
+
+/**
+ * Hides the active monster image and displays the weapon buttons.
+ */
+ function displayWeapons() {
+    let monsterImage = document.getElementById("active-monster-img");
+    monsterImage.style.display = "none";
+    let weaponsList = document.getElementById("weapons-list");
+    weaponsList.style.display = "";
 }
 
 /**
