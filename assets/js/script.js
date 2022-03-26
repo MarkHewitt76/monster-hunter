@@ -277,10 +277,16 @@ function getRandomMonster() {
 }
 
 /**
- * Takes the monster object returned by getRandomMonster
- * and writes it to the DOM.
+ * Sets the initial state for the attacks counter.
+ * Takes the monster object returned by getRandomMonster()
+ * and writes its relevant values to the DOM.
  */
 function displayRandomMonster() {
+    hideMutableElements();
+    let arena = document.getElementById("arena");
+    arena.style.display = "";
+    document.getElementById("attacks").textContent = "3";
+    
     let monster = getRandomMonster();
 
     let monsterName = monster.name;
@@ -288,7 +294,10 @@ function displayRandomMonster() {
     message.innerHTML = `You are hunting the <span id="active-monster-name">${monsterName}</span> monster!`;
 
     let image = document.getElementById("active-monster-img");
-    image.innerHTML = monster.image;
+    image.innerHTML = `
+    <img src="${monster.image}" alt="A drawing of the ${monster.name} monster by ${monster.designer}">
+    `;
+    image.style.display = "";
 }
 
 /**
