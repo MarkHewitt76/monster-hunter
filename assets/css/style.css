@@ -161,7 +161,7 @@ footer {
 
 /* restart, next level and quit buttons */
 
-#arena-btns {
+.arena-btns {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -209,13 +209,14 @@ footer {
     display: flex;
     justify-content: center;
     text-align: center;
+    font-size: 1.5rem;
 }
 
-#monster-name {
+.monster-name-style {
     font-family: 'Eater', cursive;
 }
 
-#weapon-name {
+.weapon-name-style {
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -226,10 +227,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#weapons-list a {
-    text-decoration: none;
 }
 
 /* monster details */
@@ -249,10 +246,12 @@ footer {
 
 /* weapons buttons */
 
-#weapons-list h4 {
+#choose-weapon-btn {
+    width: 300px;
     font-family: 'Eater', cursive;
-    font-weight: 400;
-    color: #54E014;
+    font-size: 1.25rem;
+    background: #fff;
+    color: #000;
 }
 
 .weapon {
