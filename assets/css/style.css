@@ -85,7 +85,7 @@ footer {
 
 /* meet the monsters section */
 
-#all-monsters {
+#monster-gallery {
     margin: 20px;
     text-align: center;
     display: flex;
@@ -93,11 +93,11 @@ footer {
     align-items: center;
 }
 
-#all-monsters h3 {
+#monster-gallery h3 {
     margin-top: 20px;
 }
 
-#all-monsters a {
+#monster-gallery a {
     color: #fff;
 }
 
