@@ -16,8 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 startOver();
             } else if (this.id === "quit-btn") {
                 quit();
-            } else {
-                let weapon = this.id
+            } else { // it's a weapon button
+                /* innerText is used here because it's imperative for
+                   the proper functioning of resolveBattle() that the
+                   returned string matches the values in the weaknesses 
+                   array EXACTLY */
+                let weapon = this.innerText;
                 resolveBattle(weapon);
             }
         })
@@ -313,8 +317,9 @@ function displayRandomMonster() {
  * event listener and calls the appropriate response.
  */
 function resolveBattle(weapon) {
+    console.log(weapon);
     let weaknesses = getActiveMonster().weaknesses;
-    
+    console.log(weaknesses);
     if (weaknesses.includes(weapon) === false) {
         decrementAttacks();
         displayFailureMessage(weapon);
