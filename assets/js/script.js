@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 displayAllMonsters();
             } else if (this.id === "rules-btn") {
                 displayRules();
+            } else if (this.id === "new-monster-btn") {
+                displayRandomMonster();
             } else if (this.id === "choose-weapon-btn") {
                 displayWeapons();
-            } else if (this.id === "restart-btn") {
-                startOver();
             } else { // it's a weapon button
                 /* innerText is used here because it's imperative for
                    the proper functioning of resolveBattle() that the
@@ -226,15 +226,6 @@ function startGame() {
 
     incrementLevel();
     displayRandomMonster();
-}
-
-/**
- * Let's the user restart the game from level one.
- * Called with the 'click' event on the Start Over button.
- */
-function startOver() {
-    document.getElementById("level").textContent = "0"; 
-    startGame();
 }
 
 /**
