@@ -247,56 +247,26 @@ function hideMainDivs() {
 }
 
 /**
- * Reads a monster table from the DOM based on the 
- * current level and returns it as an array of objects.
+ * Takes the array returned by generateMonsterArray(), reads 
+ * the current level from the DOM and uses Math.random to 
+ * return a single, random monster object based on that level.
  */
-function getMonsterArray() {
-    let table;
-
+function getRandomMonster() {
+    let allMonsters = generateMonsterArray();
     let level = document.getElementById("level").textContent;
+
+    let monsters;
     if (level === "1") {
-        table = document.getElementById("level-one-monsters");
+        monsters = allMonsters[0];
     } else if (level === "2") {
-        table = document.getElementById("level-two-monsters");
+        monsters = allMonsters[1];
     } else if (level === "3") {
-        table = document.getElementById("level-three-monsters");
+        monsters = allMonsters[2];
     } else {
         alert(`Error! Undefined level: ${level}. Please refresh the page.`);
         throw `Error! Undefined level: ${level}. Aborting!`;
     }
 
-    let tbody = table.getElementsByTagName('tbody')[0];
-    let rows = tbody.children;
-    
-    let monsters = [];
- 
-    for (let row of rows) {
-        let monster = {};
-        
-        let cells = row.children;
-        monster.name = cells[0].textContent;
-        monster.image = cells[1].innerHTML;
-        let paragraphs = cells[2].children;
-        let weaknesses = [];
-        for (let p of paragraphs) {
-            let weakness = p.textContent;
-            weaknesses.push(weakness);
-        }
-        
-        monster.weakness = weaknesses;
-        monsters.push(monster);
-    }
-    
-    return monsters;
-}
-
-/**
- * Takes the array returned by getMonsterArray()
- * and uses Math.random to return a single,
- * random monster object.
- */
-function getRandomMonster() {
-    let monsters = getMonsterArray();
     return monsters[Math.floor(Math.random() * monsters.length)];
 }
 
