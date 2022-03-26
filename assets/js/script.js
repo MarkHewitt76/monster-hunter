@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 displayWeapons();
             } else if (this.id === "restart-btn") {
                 startOver();
-            } else if (this.id === "quit-btn") {
-                quit();
             } else { // it's a weapon button
                 /* innerText is used here because it's imperative for
                    the proper functioning of resolveBattle() that the
@@ -500,19 +498,4 @@ function victoryMessage(weapon) {
 function incrementLevel() {
     let level = parseInt(document.getElementById("level").textContent);
     document.getElementById("level").textContent = ++level;
-}
-
-/**
- * Hides all content then displays ONLY
- * the original landing content.
- * Simulates reloading the game.
- */
-function quit() {
-    document.getElementById("level").textContent = "0";
-    hideMutableElements();
-    hideMainDivs();
-    let landing = document.getElementById("landing-main");
-    let landingHeader = document.getElementById("landing-header");
-    landing.style.display = "";
-    landingHeader.style.display = "";
 }
