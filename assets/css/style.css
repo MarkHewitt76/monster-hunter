@@ -234,7 +234,7 @@ footer {
 
 /* monster details */
 
-#monster-img {
+#active-monster-img {
     margin: 10px 0;
     width: 300px;
     height: 320px;
@@ -243,12 +243,8 @@ footer {
     align-items: center;
 }
 
-#monster-img img {
+#active-monster-img img {
     width: 150px;
-}
-
-#monster-weakness {
-    display: none;
 }
 
 /* weapons buttons */

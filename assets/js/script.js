@@ -279,32 +279,41 @@ function displayRandomMonster() {
 
     let monsterName = monster.name;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `You are hunting the <span id="monster-name">${monsterName}</span> monster!`;
+    message.innerHTML = `You are hunting the <span id="active-monster-name">${monsterName}</span> monster!`;
 
-    let image = document.getElementById("monster-img");
+    let image = document.getElementById("active-monster-img");
     image.innerHTML = monster.image;
-
-    let monsterWeakness = document.getElementById("monster-weakness");
-    let paragraphs = "";
-    for (let i of monster.weakness) {
-        paragraphs += `<p>${i}</p>`;
-    }
-    monsterWeakness.innerHTML = paragraphs;
 }
 
 /**
- * Reads the active monster's weaknesses from the DOM,
+ * Reads the active monster's name from the DOM, searches 
+ * for it in the monster array and returns the matching 
+ * monster object.
+ */
+ function getActiveMonster() {
+    let activeMonster = document.getElementById("active-monster-name").textContent;
+    let allMonsters = generateMonsterArray();
+    
+    let monster;
+    for (let x in allMonsters) {
+        let monsters = allMonsters[x];
+        for (let y in monsters) {
+            if (monsters[y].name === activeMonster) {
+                monster = monsters[y];
+            }
+        }
+    }
+
+    return monster;
+}
+
+/**
+ * Gets the active monster's weaknesses from getActiveMonster(),
  * compares them with the weapon passed in by the 'click'
  * event listener and calls the appropriate response.
  */
 function resolveBattle(weapon) {
-    let weaknesses = [];
-
-    let paragraphs = document.getElementById("monster-weakness").children;
-    for (let p of paragraphs) {
-        let weakness = p.textContent;
-        weaknesses.push(weakness);
-    }
+    let weaknesses = getActiveMonster().weaknesses;
     
     if (weaknesses.includes(weapon) === false) {
         decrementAttacks();
@@ -347,11 +356,11 @@ function displayFailureMessage(weapon) {
  * active monster.
  */
 function failureMessage1(weapon) {
-    let monsterName = document.getElementById("monster-name").innerHTML;
+    let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster is now hunting you!`;
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name">${monsterName}</span> monster is now hunting you!`;
 
-    let image = document.getElementById("monster-img").children[0];
+    let image = document.getElementById("active-monster-img").children[0];
     image.style.width = "200px";
 }
 
@@ -360,11 +369,11 @@ function failureMessage1(weapon) {
  * a new warning message and the monster image gets bigger.
  */
 function failureMessage2(weapon) {
-    let monsterName = document.getElementById("monster-name").innerHTML;
+    let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster almost had you that time!`;
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name">${monsterName}</span> monster almost had you that time!`;
 
-    let image = document.getElementById("monster-img").children[0];
+    let image = document.getElementById("active-monster-img").children[0];
     image.style.width = "250px";
 }
 
@@ -373,9 +382,9 @@ function failureMessage2(weapon) {
  * message and animated gif upon losing the game.
  */
 function defeatMessage(weapon) {
-    let monsterName = document.getElementById("monster-name").innerHTML;
+    let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!`;
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!`;
 
     hideMutableElements();
     let finalOutcome = document.getElementById("win-lose-img");
@@ -407,9 +416,9 @@ function displayWinMessage(weapon) {
  * Reveals the Next Level button for the user to progress.
  */
 function winMessage1(weapon) {
-    let monsterName = document.getElementById("monster-name").innerHTML;
+    let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> WORKED! The <span id="monster-name">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?`;
+    message.innerHTML = `THE <span id="weapon-name">${weapon}</span> WORKED! The <span id="active-monster-name">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?`;
 
     hideMutableElements();
     let conratsImage = document.getElementById("win-lose-img");
@@ -426,9 +435,9 @@ function winMessage1(weapon) {
  * Reveals the Next Level button for the user to progress.
  */
 function winMessage2(weapon) {
-    let monsterName = document.getElementById("monster-name").innerHTML;
+    let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `YEAH! Way to handle that <span id="monster-name">${monsterName}</span> monster. Good choice with the <span id="weapon-name">${weapon}</span>! Are you up to taking on one more?`;
+    message.innerHTML = `YEAH! Way to handle that <span id="active-monster-name">${monsterName}</span> monster. Good choice with the <span id="weapon-name">${weapon}</span>! Are you up to taking on one more?`;
 
     hideMutableElements();
     let conratsImage = document.getElementById("win-lose-img");
@@ -444,9 +453,9 @@ function winMessage2(weapon) {
  * message and animated gif upon finishing the game.
  */
 function victoryMessage(weapon) {
-    let monsterName = document.getElementById("monster-name").innerHTML;
+    let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `YEEEEESSSSS! YOU DID IT!! Even the <span id="monster-name">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name">${weapon}</span>! Congratulations on a perfect hunt!`;
+    message.innerHTML = `YEEEEESSSSS! YOU DID IT!! Even the <span id="active-monster-name">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name">${weapon}</span>! Congratulations on a perfect hunt!`;
 
     hideMutableElements();
     let conratsImage = document.getElementById("win-lose-img");
