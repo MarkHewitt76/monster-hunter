@@ -26,6 +26,10 @@ h1 {
     font-family: 'Eater', cursive;
 }
 
+a {
+    text-decoration: none;
+}
+
 .btn {
     width: 150px;
     margin: 5px;
@@ -97,22 +101,27 @@ footer {
     margin-top: 20px;
 }
 
-#monster-gallery a {
-    color: #fff;
+.monster-gallery-div {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-.monster-table td {
+.monster-image {
+    margin: 2.5px;
+    padding: 5px;
+}
+
+.monster-image figcaption {
     padding: 5px;
     font-family: 'Eater', cursive;
     font-size: 1rem;
 }
 
-.monster-table th:nth-of-type(3), .monster-table td:nth-of-type(3) {
-    display: none;
-} 
-
-.monster-table img {
-    width: 150px;
+.monster-image img {
+    height: 150px;
 }
 
 /* rules section */

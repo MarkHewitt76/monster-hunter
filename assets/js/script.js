@@ -135,13 +135,47 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 /**
- * Displays ONLY the monster tables when the
- * 'Meet the Monsters' button is clicked.
+ * Gets the array returned by generateMonsterArray() and passes it to 
+ * generateMonsterGalleryHtml(), takes the result and writes it
+ * to the DOM as a 'gallery' of all monsters, then displays ONLY 
+ * that gallery when the 'Meet the Monsters' button is clicked.
  */
-function displayAllMonsters() {
+ function displayAllMonsters() {
+    let allMonsters = generateMonsterArray();
+
+    let monsterHtml = [];
+    for (let monsters of allMonsters) {
+        monsterHtml.push(generateMonsterGalleryHtml(monsters));
+    }
+
+    let monsterGalleryDiv = document.getElementsByClassName("monster-gallery-div");
+    for (let i in monsterHtml) {
+        monsterGalleryDiv[i].innerHTML = monsterHtml[i];    
+    }
+
     hideMutableElements();
-    let allMonsters = document.getElementById("all-monsters");
-    allMonsters.style.display = "";
+    let monsterGallery = document.getElementById("monster-gallery");
+    monsterGallery.style.display = "";
+}
+
+/**
+ * Operates on the array of 'monster' objects passed to it, in 
+ * order to generate and return the html for the 
+ * 'Meet the Monsters' section.
+ */
+function generateMonsterGalleryHtml (monsterArray) {
+    let monsterHtml = "";
+
+    for (let monster of monsterArray) {
+        monsterHtml += `
+        <figure class="monster-image">
+            <figcaption>${monster.name}</figcaption>
+            <img src="${monster.image}" alt="A drawing of the ${monster.name} monster by ${monster.designer}">
+        </figure>
+        `;
+    }
+    
+    return monsterHtml;
 }
 
 /**
