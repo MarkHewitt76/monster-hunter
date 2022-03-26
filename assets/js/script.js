@@ -1,7 +1,7 @@
 // Wait for the DOM to finish loading before running
 // Get the elements with a class of "btn" & add event listeners to them
 document.addEventListener("DOMContentLoaded", function() {
-    hideMutableChildren();
+    hideMutableElements();
     let buttons = document.getElementsByClassName("btn");
 
     for (let button of buttons) {
@@ -22,14 +22,124 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
     }
-})
+});
+
+/**
+ * Builds and returns a nested data structure comprising 
+ * a list (array) of all monsters (objects) by level (array).
+ */
+ function generateMonsterArray() {
+    let levelOneMonsters = [
+        {
+            name: 'Aglee',
+            image: 'assets/images/aglee.jpg',
+            weaknesses: ['Dagger', 'Poisoned Blade', 'Pistol'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Agzel',
+            image: 'assets/images/agzel.jpg',
+            weaknesses: ['Sword', 'Flame Axe', 'Sub-Machine Gun'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Armoul',
+            image: 'assets/images/armoul.jpg',
+            weaknesses: ['Axe', 'Ice-Tipped Arrow', 'Shotgun'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Pinky',
+            image: 'assets/images/pinky.jpg',
+            weaknesses: ['Bow & Arrow', 'Flame Axe', 'Sub-Machine Gun'],
+            designer: 'Caoimhin'
+        },
+        {
+            name: 'Serpent',
+            image: 'assets/images/serpent.jpg',
+            weaknesses: ['Dagger', 'Axe', 'Poisoned Blade'],
+            designer: 'Nathan'
+        }
+    ];
+
+    let levelTwoMonsters = [
+        {
+            name: 'Astaroth',
+            image: 'assets/images/astaroth.jpg',
+            weaknesses: ['Axe', 'Shotgun'],
+            designer: 'Caoimhin'
+        },
+        {
+            name: 'Hopper',
+            image: 'assets/images/hopper.jpg',
+            weaknesses: ['Bow & Arrow', 'Sub-Machine Gun'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Spectreco',
+            image: 'assets/images/spectreco.jpg',
+            weaknesses: ['Sword', 'Pistol'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Stompoxer',
+            image: 'assets/images/stompoxer.jpg',
+            weaknesses: ['Flame Axe', 'Shotgun'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Tentaclucker',
+            image: 'assets/images/tentaclucker.jpg',
+            weaknesses: ['Ice-Tipped Arrow', 'Poisoned Blade'],
+            designer: 'Nathan'
+        }
+    ];
+
+    let levelThreeMonsters = [
+          /* Weaknesses defined as a single item array to allow for
+           adding more in future implementations */
+        {
+            name: 'Cacodemon',
+            image: 'assets/images/cacodemon.jpg',
+            weaknesses: ['Axe'],
+            designer: 'Caoimhin'
+        },
+        {
+            name: 'Demon',
+            image: 'assets/images/demon.jpg',
+            weaknesses: ['Poisoned Blade'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Dragon',
+            image: 'assets/images/dragon.jpg',
+            weaknesses: ['Bow & Arrow'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Ice Dragon',
+            image: 'assets/images/ice_dragon.jpg',
+            weaknesses: ['Flame Axe'],
+            designer: 'Nathan'
+        },
+        {
+            name: 'Scorcher',
+            image: 'assets/images/scorcher.jpg',
+            weaknesses: ['Ice-Tipped Arrow'],
+            designer: 'Nathan'
+        }
+    ];
+
+    let allMonsters = [levelOneMonsters, levelTwoMonsters, levelThreeMonsters];
+    return allMonsters;
+}
 
 /**
  * Displays ONLY the monster tables when the
  * 'Meet the Monsters' button is clicked.
  */
 function displayAllMonsters() {
-    hideMutableChildren();
+    hideMutableElements();
     let allMonsters = document.getElementById("all-monsters");
     allMonsters.style.display = "";
 }
@@ -39,17 +149,17 @@ function displayAllMonsters() {
  * 'Read the Rules' button is clicked.
  */
 function displayRules() {
-    hideMutableChildren();
+    hideMutableElements();
     let rules = document.getElementById("rules");
     rules.style.display = "";
 }
 
 /**
  * Hides all elements with the class of
- * "mutable-child".
+ * "mutable-element".
  */
-function hideMutableChildren() {
-    let hiddenElements = document.getElementsByClassName("mutable-child");
+function hideMutableElements() {
+    let hiddenElements = document.getElementsByClassName("mutable-element");
     for (let element of hiddenElements) {
         if (element.style.display !== "none") {
             element.style.display = "none";
@@ -67,7 +177,7 @@ function hideMutableChildren() {
  */
 function startGame() {
     hideMainDivs();
-    hideMutableChildren();
+    hideMutableElements();
 
     let mainGame = document.getElementById("game-main");
     let arena = document.getElementById("arena");
@@ -263,7 +373,7 @@ function defeatMessage(weapon) {
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `THE <span id="weapon-name">${weapon}</span> HAD NO EFFECT! The <span id="monster-name">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!`;
 
-    hideMutableChildren();
+    hideMutableElements();
     let finalOutcome = document.getElementById("win-lose-img");
     finalOutcome.style.display = "";
     finalOutcome.innerHTML = `<img src="assets/images/upset_emoji.gif" alt="An animated emoji, crying and thumping its fists">`;
@@ -297,7 +407,7 @@ function winMessage1(weapon) {
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `THE <span id="weapon-name">${weapon}</span> WORKED! The <span id="monster-name">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?`;
 
-    hideMutableChildren();
+    hideMutableElements();
     let conratsImage = document.getElementById("win-lose-img");
     conratsImage.style.display = "";
     conratsImage.innerHTML = `<img src="assets/images/angry_skeleton.gif" alt="An animated image of a skeleton in a coffin saying, 'Leave me alone, I'm dead'">`;
@@ -316,7 +426,7 @@ function winMessage2(weapon) {
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `YEAH! Way to handle that <span id="monster-name">${monsterName}</span> monster. Good choice with the <span id="weapon-name">${weapon}</span>! Are you up to taking on one more?`;
 
-    hideMutableChildren();
+    hideMutableElements();
     let conratsImage = document.getElementById("win-lose-img");
     conratsImage.style.display = "";
     conratsImage.innerHTML = `<img src="assets/images/twirling_xena.gif" alt="An animated image of Xena, warrior princess doing a celebratory twirl">`;
@@ -334,7 +444,7 @@ function victoryMessage(weapon) {
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `YEEEEESSSSS! YOU DID IT!! Even the <span id="monster-name">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name">${weapon}</span>! Congratulations on a perfect hunt!`;
 
-    hideMutableChildren();
+    hideMutableElements();
     let conratsImage = document.getElementById("win-lose-img");
     conratsImage.style.display = "";
     conratsImage.innerHTML = `<img src="assets/images/lit_baby.gif" alt="An animated image of a baby at a sports game, appearing to cheer and fist pump as enthusiastically as any adult fan">`;
@@ -355,7 +465,7 @@ function incrementLevel() {
  */
 function quit() {
     document.getElementById("level").textContent = "0";
-    hideMutableChildren();
+    hideMutableElements();
     hideMainDivs();
     let landing = document.getElementById("landing-main");
     let landingHeader = document.getElementById("landing-header");
