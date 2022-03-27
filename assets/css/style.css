@@ -74,7 +74,7 @@ footer {
     line-height: 100%;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
     cursor: pointer;
     transform: translateY(-5px);
     box-shadow: 0 5px 5px -1px;
@@ -94,7 +94,7 @@ footer {
     color: #000;
 }
 
-.start-btn:hover {
+.start-btn:hover, .start-btn:focus {
     border: 2px solid #4b4645;
     color: #4b4645;
     transform: translateY(-2.5px);
@@ -278,7 +278,7 @@ footer {
     animation-delay: 20ms;
 }
 
-#next-level-btn:hover {
+#next-level-btn:hover, #next-level-btn:focus {
     border: 2px solid #4b4645;
     color: #4b4645;
     transform: translateY(-2.5px);
@@ -375,7 +375,7 @@ footer {
     animation-delay: 20ms;
 }
 
-#choose-weapon-btn:hover {
+#choose-weapon-btn:hover, #choose-weapon-btn:focus {
     border: 2px solid #4b4645;
     color: #4b4645;
     transform: translateY(-2.5px);
