@@ -56,6 +56,9 @@ footer {
 
 .btn:hover {
     cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s ;
 }
 
 .start-btn {
@@ -65,6 +68,14 @@ footer {
     font-family: 'Eater', cursive;
     font-size: 1.5rem;
     color: #000;
+}
+
+.start-btn:hover {
+    border: 2px solid #4b4645;
+    color: #4b4645;
+    transform: translateY(-2.5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s ;
 }
 
 /* landing area styles */
@@ -217,6 +228,14 @@ footer {
     color: #000;
 }
 
+#next-level-btn:hover {
+    border: 2px solid #4b4645;
+    color: #4b4645;
+    transform: translateY(-2.5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s ;
+}
+
 /* scores */
 
 #score-area {
@@ -296,6 +315,14 @@ footer {
     color: #000;
 }
 
+#choose-weapon-btn:hover {
+    border: 2px solid #4b4645;
+    color: #4b4645;
+    transform: translateY(-2.5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s ;
+}
+
 .weapon {
     margin: 2.5px 10px;
     width: 300px;
@@ -341,7 +368,7 @@ footer {
     #landing-btns, .arena-btns {
         flex-direction: column;
     }
-    
+
     /* rules section */
     .rules-weapon-img img {
         height: 42.5px;
