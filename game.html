@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Monster Hunter</title>
 </head>
+
 <body>
+    
     <!-- landing header -->
     <header id="game-header" class="header">
         <h4>Nathan &amp; Caoimhin's</h4>
@@ -17,6 +20,7 @@
     </header>
 
     <main>
+
         <!-- game page landing section -->
         <div id="game-landing" class="mutable">
             <h3>Welcome to the hunt!</h3>
@@ -25,28 +29,33 @@
                 <button id="go-back" class="btn">Turn Back</button>
             </a>
         </div>
+
         <!-- main game section -->
         <div id="game-main" class="mutable" style="display: none;">
+
             <!-- restart, next level and quit buttons -->
             <div class="arena-btns">
-                <button id="new-game-btn" class="btn mutable-element" style="display: none;">New Game</button>
                 <button id="new-monster-btn" class="btn">New Monster</button>
                 <button id="next-level-btn" class="btn mutable-element">Next Level</button>
                 <a href="index.html">
                     <button id="quit-btn" class="btn">Quit</button>
                 </a>
             </div>
+
             <!-- score area -->
             <div id="score-area">
                 <h3 class="scores">LEVEL: <span id="level">0</span></h3>
                 <h3 class="scores">Attacks Left: <span id="attacks"></span></h3>
             </div>
+
             <!-- game message section -->
             <div id="arena-message">
                 <p></p>
             </div>
+
             <!-- arena -->
             <div id="arena" class="mutable-element">
+
                 <!-- choose weapon button -->
                 <div class="arena-btns">
                     <button id="choose-weapon-btn" class="btn">Choose Your Weapon</button>
@@ -114,15 +123,20 @@
                         </div>
                     </a>
                 </div>
+
                 <!-- active monster image container -->
                 <div class="arena-box">
                     <!-- active monster image -->
                     <div id="active-monster-img"></div>
                 </div>
+
             </div>
+
             <!-- win / lose image section -->
             <div id="win-lose-img" class="mutable-element"></div>
+
         </div>
+
     </main>
 
     <footer id="footer">
@@ -132,5 +146,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+
 </body>
+
 </html>

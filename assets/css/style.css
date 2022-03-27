@@ -15,6 +15,11 @@ body {
     font-family: 'Kalam', cursive;
     font-size: 1.25rem;
     color: #fff;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 20ms;
 }
 
 header {
@@ -32,9 +37,17 @@ a {
 
 footer {
     text-align: center;
-    margin: 20px 10px;
+    margin: 150px 20px 10px;
     font-size: 1rem;
     line-height: 20px;
+}
+
+.mutable .mutable-elements {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
 }
 
 /* generic button styles */
@@ -49,7 +62,6 @@ footer {
     border-radius: 10px;
     font-family: 'Kalam', cursive;
     font-size: 1.125rem;
-    font-size: 1rem;
     font-weight: 700;
     color: #fff;
     line-height: 100%;
@@ -113,6 +125,11 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
 }
 
 #monster-gallery h3 {
@@ -150,6 +167,11 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 20ms;
 }
 
 #rules ul, #rules ol {
@@ -201,6 +223,14 @@ footer {
     align-items: center;
 }
 
+#game-main {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 20ms;
+}
+
 /* start, restart, next level and quit buttons */
 
 .arena-btns {
@@ -227,6 +257,11 @@ footer {
     font-family: 'Eater', cursive;
     font-size: 1.5rem;
     color: #000;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 20ms;
 }
 
 #next-level-btn:hover {
@@ -291,7 +326,7 @@ footer {
     align-items: center;
 }
 
-/* monster details */
+/* active monster image */
 
 #active-monster-img {
     margin: 10px 0;
@@ -304,6 +339,11 @@ footer {
 
 #active-monster-img img {
     width: 150px;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 20ms;
 }
 
 /* weapons buttons */
@@ -314,6 +354,11 @@ footer {
     font-size: 1.25rem;
     background: #fff;
     color: #000;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 20ms;
 }
 
 #choose-weapon-btn:hover {
@@ -324,6 +369,14 @@ footer {
     transition: all 0.25s ;
 }
 
+#weapons-list {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5ms;
+}
+
 .weapon {
     margin: 2.5px 10px;
     width: 300px;
@@ -331,6 +384,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation-name: roll-down;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-delay: 1ms;
 }
 
 .weapon p {
@@ -350,15 +407,39 @@ footer {
     margin: 5px 10px;
     display: flex;
     justify-content: center;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.25s;
 }
 
 #win-lose-img img {
     width: 300px;
 }
 
+/* animations keyframes */
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
 
+    to {
+        opacity: 1;
+    }
+    
+}
 
+@keyframes roll-down {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 60px;
+    }
+}
 
 /* media queries */
 
@@ -390,5 +471,3 @@ footer {
         font-size: 0.75rem;
     }
 }
-
-

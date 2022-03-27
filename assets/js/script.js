@@ -141,10 +141,10 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 /**
- * Gets the array returned by generateMonsterArray() and passes it to 
- * generateMonsterGalleryHtml(), takes the result and writes it
- * to the DOM as a 'gallery' of all monsters, then displays ONLY 
- * that gallery when the 'Meet the Monsters' button is clicked.
+ * Gets the array returned by generateMonsterArray(), breaks it down 
+ * and passes it to generateMonsterGalleryHtml(). Takes the result 
+ * and writes it to the DOM as a 'gallery' of all monsters. Displays 
+ * ONLY that gallery when the 'Meet the Monsters' button is clicked.
  */
  function displayAllMonsters() {
     let allMonsters = generateMonsterArray();
@@ -165,9 +165,9 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 /**
- * Operates on the array of 'monster' objects passed to it, in 
- * order to generate and return the html for the 
- * 'Meet the Monsters' section.
+ * Operates on the array of 'monster' objects passed to it 
+ * in order to generate and return the html for the 
+ * 'Meet the Monsters' gallery section.
  */
 function generateMonsterGalleryHtml (monsterArray) {
     let monsterHtml = "";
@@ -195,8 +195,10 @@ function displayRules() {
 }
 
 /**
- * Hides all elements with the class of
- * "mutable-element".
+ * Hides all elements with the class of "mutable-element" 
+ * by setting their display properties to "none". Each function
+ * that calls it can then remove 'display: none;' from the 
+ * relevant element(s).
  */
 function hideMutableElements() {
     let hiddenElements = document.getElementsByClassName("mutable-element");
@@ -208,8 +210,10 @@ function hideMutableElements() {
 }
 
 /**
- * Hides all elements with the class of
- * "mutable".
+ * Hides all elements with the class of "mutable" 
+ * by setting their display properties to "none". 
+ * Each function that calls it can then remove 
+ * 'display: none;' from the relevant element(s).
  */
 function hideMainDivs() {
     let hiddenDivs = document.getElementsByClassName("mutable");
@@ -222,11 +226,12 @@ function hideMainDivs() {
 
 /**
  * The main game function, called by the click events 
- * on both the Let's Hunt! and Next Level buttons.
- * Sets the initial states for the  attacks counter 
- * and increments the level counter each time it's called. 
- * Displays ONLY the main game section with a
- * random monster written in by displayRandomMonster().
+ * on both the 'Let's Hunt!' and 'Next Level' buttons.
+ * Sets the initial state for the attacks counter 
+ * and increments the level counter each time it's 
+ * called. Displays ONLY the main game section with a
+ * random monster's name and image written in by 
+ * displayRandomMonster().
  */
 function startGame() {
     hideMainDivs();
@@ -335,10 +340,12 @@ function displayRandomMonster() {
 }
 
 /**
- * Hides the weapons buttons and displays the active monster image.
+ * Hides the weapons buttons and removes 'display: none;' 
+ * from the active monster image in case it's needed.
  * Gets the active monster's weaknesses from getActiveMonster(),
- * compares them with the weapon passed in by the 'click'
- * event listener and calls the appropriate response.
+ * compares them with the 'weapon' string passed in by the 
+ * 'click' event listener on the weapons buttons and calls the 
+ * appropriate function, passing it the 'weapon' string.
  */
 function resolveBattle(weapon) {
     let weaponsList = document.getElementById("weapons-list");
@@ -373,8 +380,8 @@ function incrementLevel() {
 }
 
 /**
- * Calls for the failure message displayed by the 
- * functions below, based on the number of remaining
+ * Calls for the relevant failure message displayed by 
+ * the functions below, based on the number of remaining
  * attacks.
  */
 function displayFailureMessage(weapon) {
@@ -393,8 +400,9 @@ function displayFailureMessage(weapon) {
 
 /**
  * Displays the outcome of the user's first failed attempt:
- * gives a warning message and enlarges the image of the
- * active monster.
+ * a warning message which includes the selected weapon's
+ * name and the name of the currently active monster (read 
+ * from the DOM). Enlarges the image of the active monster.
  */
 function failureMessage1(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
@@ -409,7 +417,9 @@ function failureMessage1(weapon) {
 
 /**
  * Displays the outcome of the user's second failed attempt:
- * a new warning message and the monster image gets bigger.
+ * a new warning message which includes the selected weapon's 
+ * name and the name of the currently active monster (read 
+ * from the DOM). Enlarges the image of the active monster.
  */
 function failureMessage2(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
@@ -424,8 +434,10 @@ function failureMessage2(weapon) {
 
 /**
  * Hides the main game area and displays a commiseration 
- * message and animated gif upon losing the game.
- * Switches New Monster button for New Game button.
+ * message and animated gif upon losing the game. The 
+ * message includes the selected weapon's name and the 
+ * name of the currently active monster (read from the DOM).
+ * Switches the 'New Monster' button for the 'New Game' button.
  */
 function defeatMessage(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
@@ -448,8 +460,8 @@ function defeatMessage(weapon) {
 }
 
 /**
- * Calls for the success message displayed by the 
- * functions below, based on the current level.
+ * Calls for the relevant success message displayed by 
+ * the functions below, based on the current level.
  */
 function displayWinMessage(weapon) {
     let level = document.getElementById("level").textContent;
@@ -467,8 +479,10 @@ function displayWinMessage(weapon) {
 
 /**
  * Hides the main game area and displays a congratulatory
- * message and animated gif upon passing level 1. 
- * Reveals the Next Level button for the user to progress.
+ * message and animated gif upon passing level 1. The 
+ * message includes the selected weapon's name and the 
+ * name of the currently active monster (read from the DOM).
+ * Reveals the 'Next Level' button for the user to progress.
  */
 function winMessage1(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
@@ -490,8 +504,10 @@ function winMessage1(weapon) {
 
 /**
  * Hides the main game area and displays a congratulatory
- * message and animated gif upon passing level 2. 
- * Reveals the Next Level button for the user to progress.
+ * message and animated gif upon passing level 2. The 
+ * message includes the selected weapon's name and the 
+ * name of the currently active monster (read from the DOM).
+ * Reveals the 'Next Level' button for the user to progress.
  */
 function winMessage2(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
@@ -513,8 +529,11 @@ function winMessage2(weapon) {
 
 /**
  * Hides the main game area and displays a congratulatory
- * message and animated gif upon finishing the game.
- * Switches New Monster button for New Game button.
+ * message and animated gif upon finishing the game. The 
+ * message includes the selected weapon's name and the 
+ * name of the currently active monster (read from the 
+ * DOM). Switches the 'New Monster' button for the 'New 
+ * Game' button.
  */
 function victoryMessage(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
