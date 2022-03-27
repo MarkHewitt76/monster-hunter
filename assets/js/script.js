@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let weapon = this.innerText;
                 resolveBattle(weapon);
             }
-        })
+        });
     }
 });
 

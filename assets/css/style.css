@@ -31,8 +31,15 @@ h1 {
     font-family: 'Eater', cursive;
 }
 
+li {
+    
+    list-style: none;
+}
+
 a {
     text-decoration: none;
+    color: #fff;
+    text-align: center;
 }
 
 footer {
@@ -83,12 +90,20 @@ footer {
     color: #000;
 }
 
+.start-btn a {
+    color: #000;
+}
+
 .start-btn:hover {
     border: 2px solid #4b4645;
     color: #4b4645;
     transform: translateY(-2.5px);
     box-shadow: 0 5px 5px -1px;
     transition: all 0.25s ;
+}
+
+.link-btn {
+    line-height: 150%;
 }
 
 /* landing area styles */
@@ -175,7 +190,6 @@ footer {
 }
 
 #rules ul, #rules ol {
-    list-style: none;
     text-align: center;
 }
 
