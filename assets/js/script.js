@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 displayRandomMonster();
             } else if (this.id === "choose-weapon-btn") {
                 displayWeapons();
+            } else if (this.id === "new-game-btn") {
+                newGame();
             } else { // it's a weapon button
                 /* innerText is used here because it's imperative for
                    the proper functioning of resolveBattle() that the
@@ -206,6 +208,19 @@ function hideMutableElements() {
 }
 
 /**
+ * Hides all elements with the class of
+ * "mutable".
+ */
+function hideMainDivs() {
+    let hiddenDivs = document.getElementsByClassName("mutable");
+    for (let mutableDiv of hiddenDivs) {
+        if (mutableDiv.style.display !== "none") {
+            mutableDiv.style.display = "none";
+        }
+    }
+}
+
+/**
  * The main game function, called by the click events 
  * on both the Let's Hunt! and Next Level buttons.
  * Sets the initial states for the  attacks counter 
@@ -222,23 +237,19 @@ function startGame() {
     mainGame.style.display = "";
     arena.style.display = "";
 
-    document.getElementById("attacks").textContent = "3";
-
     incrementLevel();
     displayRandomMonster();
 }
 
 /**
- * Hides all elements with the class of
- * "mutable".
+ * Let's the user restart the game from level one.
+ * Called with the 'click' event on the New Game button.
  */
-function hideMainDivs() {
-    let hiddenDivs = document.getElementsByClassName("mutable");
-    for (let mutableDiv of hiddenDivs) {
-        if (mutableDiv.style.display !== "none") {
-            mutableDiv.style.display = "none";
-        }
-    }
+function newGame() {
+    let newMonsterBtn = document.getElementById("new-monster-btn");
+    newMonsterBtn.style.display = "";
+    document.getElementById("level").textContent = "0"; 
+    startGame();
 }
 
 /**
@@ -280,7 +291,9 @@ function displayRandomMonster() {
 
     let monsterName = monster.name;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `You are hunting the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster!`;
+    message.innerHTML = `
+    You are hunting the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster!
+    `;
 
     let image = document.getElementById("active-monster-img");
     image.innerHTML = `
@@ -352,6 +365,14 @@ function decrementAttacks() {
 }
 
 /**
+ * Increases the current level by 1.
+ */
+function incrementLevel() {
+    let level = parseInt(document.getElementById("level").textContent);
+    document.getElementById("level").textContent = ++level;
+}
+
+/**
  * Calls for the failure message displayed by the 
  * functions below, based on the number of remaining
  * attacks.
@@ -378,7 +399,9 @@ function displayFailureMessage(weapon) {
 function failureMessage1(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster is now hunting you!`;
+    message.innerHTML = `
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster is now hunting you!
+    `;
 
     let image = document.getElementById("active-monster-img").children[0];
     image.style.width = "200px";
@@ -391,7 +414,9 @@ function failureMessage1(weapon) {
 function failureMessage2(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster almost had you that time!`;
+    message.innerHTML = `
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster almost had you that time!
+    `;
 
     let image = document.getElementById("active-monster-img").children[0];
     image.style.width = "250px";
@@ -400,16 +425,26 @@ function failureMessage2(weapon) {
 /**
  * Hides the main game area and displays a commiseration 
  * message and animated gif upon losing the game.
+ * Switches New Monster button for New Game button.
  */
 function defeatMessage(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!`;
+    message.innerHTML = `
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!
+    `;
 
     hideMutableElements();
     let finalOutcome = document.getElementById("win-lose-img");
     finalOutcome.style.display = "";
-    finalOutcome.innerHTML = `<img src="assets/images/upset_emoji.gif" alt="An animated emoji, crying and thumping its fists">`;
+    finalOutcome.innerHTML = `
+    <img src="assets/images/upset_emoji.gif" alt="An animated emoji, crying and thumping its fists">
+    `;
+
+    let newMonsterBtn = document.getElementById("new-monster-btn");
+    newMonsterBtn.style.display = "none";
+    let newGameBtn = document.getElementById("new-game-btn");
+    newGameBtn.style.display = "";
 }
 
 /**
@@ -438,12 +473,16 @@ function displayWinMessage(weapon) {
 function winMessage1(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> WORKED! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?`;
+    message.innerHTML = `
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> WORKED! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?
+    `;
 
     hideMutableElements();
     let congratsImage = document.getElementById("win-lose-img");
     congratsImage.style.display = "";
-    congratsImage.innerHTML = `<img src="assets/images/angry_skeleton.gif" alt="An animated image of a skeleton in a coffin saying, 'Leave me alone, I'm dead'">`;
+    congratsImage.innerHTML = `
+    <img src="assets/images/angry_skeleton.gif" alt="An animated image of a skeleton in a coffin saying, 'Leave me alone, I'm dead'">
+    `;
 
     let nextLevelBtn = document.getElementById("next-level-btn");
     nextLevelBtn.style.display = "";
@@ -457,12 +496,16 @@ function winMessage1(weapon) {
 function winMessage2(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `YEAH! Way to handle that <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster. Good choice with the <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Are you up to taking on one more?`;
+    message.innerHTML = `
+    YEAH! Way to handle that <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster. Good choice with the <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Are you up to taking on one more?
+    `;
 
     hideMutableElements();
     let congratsImage = document.getElementById("win-lose-img");
     congratsImage.style.display = "";
-    congratsImage.innerHTML = `<img src="assets/images/twirling_xena.gif" alt="An animated image of Xena, warrior princess doing a celebratory twirl">`;
+    congratsImage.innerHTML = `
+    <img src="assets/images/twirling_xena.gif" alt="An animated image of Xena, warrior princess doing a celebratory twirl">
+    `;
 
     let nextLevelBtn = document.getElementById("next-level-btn");
     nextLevelBtn.style.display = "";
@@ -471,22 +514,24 @@ function winMessage2(weapon) {
 /**
  * Hides the main game area and displays a congratulatory
  * message and animated gif upon finishing the game.
+ * Switches New Monster button for New Game button.
  */
 function victoryMessage(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
     let message = document.getElementById("arena-message").children[0];
-    message.innerHTML = `YEEEEESSSSS! YOU DID IT!! Even the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Congratulations on a perfect hunt!`;
+    message.innerHTML = `
+    YEEEEESSSSS! YOU DID IT!! Even the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Congratulations on a perfect hunt!
+    `;
 
     hideMutableElements();
     let congratsImage = document.getElementById("win-lose-img");
     congratsImage.style.display = "";
-    congratsImage.innerHTML = `<img src="assets/images/lit_baby.gif" alt="An animated image of a baby at a sports game, appearing to cheer and fist pump as enthusiastically as any adult fan">`;
-}
+    congratsImage.innerHTML = `
+    <img src="assets/images/lit_baby.gif" alt="An animated image of a baby at a sports game, appearing to cheer and fist pump as enthusiastically as any adult fan">
+    `;
 
-/**
- * Increases the current level by 1.
- */
-function incrementLevel() {
-    let level = parseInt(document.getElementById("level").textContent);
-    document.getElementById("level").textContent = ++level;
+    let newMonsterBtn = document.getElementById("new-monster-btn");
+    newMonsterBtn.style.display = "none";
+    let newGameBtn = document.getElementById("new-game-btn");
+    newGameBtn.style.display = "";
 }
