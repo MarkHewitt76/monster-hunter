@@ -2,7 +2,7 @@
 // Get the elements with a class of "btn" & add event listeners to them
 document.addEventListener("DOMContentLoaded", function() {
     hideMutableElements();
-    let buttons = document.getElementsByClassName("btn");
+    let buttons = document.getElementsByClassName("event-btn");
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
