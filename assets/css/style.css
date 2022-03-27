@@ -41,12 +41,14 @@ footer {
 
 .btn {
     width: 150px;
+    height: 40px;
     margin: 5px;
     padding: 5px;
     background: #000;
     border: 2px solid #fff;
     border-radius: 10px;
     font-family: 'Kalam', cursive;
+    font-size: 1.125rem;
     font-size: 1rem;
     font-weight: 700;
     color: #fff;
@@ -81,18 +83,14 @@ footer {
 
 /* landing area buttons */
 
-#landing-buttons {
+#landing-btns {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.start-btn {
-    width: 200px;
-    background: #fff;
-    font-family: 'Eater', cursive;
-    font-size: 1.5rem;
-    color: #000;
+#monsters-btn, #rules-btn {
+    font-size: 1rem;
 }
 
 /* meet the monsters section */
@@ -191,7 +189,7 @@ footer {
     align-items: center;
 }
 
-/* restart, next level and quit buttons */
+/* start, restart, next level and quit buttons */
 
 .arena-btns {
     display: flex;
@@ -212,6 +210,7 @@ footer {
 
 #next-level-btn {
     width: 200px;
+    height: 50px;
     background: #fff;
     font-family: 'Eater', cursive;
     font-size: 1.5rem;
@@ -300,6 +299,7 @@ footer {
 .weapon {
     margin: 2.5px 10px;
     width: 300px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -336,7 +336,12 @@ footer {
 
 /* for screens less than 640 pixels wide */
 @media screen and (max-width: 639px) {
-
+    
+    /* buttons */
+    #landing-btns, .arena-btns {
+        flex-direction: column;
+    }
+    
     /* rules section */
     .rules-weapon-img img {
         height: 42.5px;
