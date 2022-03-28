@@ -43,7 +43,12 @@ document.addEventListener("DOMContentLoaded", function() {
             else if (this.id === "new-monster-btn") {
                 displayRandomMonster();
             } else if (this.id === "choose-weapon-btn") {
-                displayWeapons();
+                let buttonText = this.textContent;
+                if (buttonText === "Ready Your Weapons") {
+                    displayWeapons();    
+                } else {
+                    hideWeapons();
+                }
             } else if (this.id === "new-game-btn") {
                 newGame();
             } else { // it's a weapon button
@@ -344,6 +349,15 @@ function displayRandomMonster() {
     monsterImage.style.display = "none";
     let weaponsList = document.getElementById("weapons-list");
     weaponsList.style.display = "";
+    document.getElementById("choose-weapon-btn").textContent = "Choose Your Weapon";
+}
+
+function hideWeapons() {
+    let weaponsList = document.getElementById("weapons-list");
+    weaponsList.style.display = "none";
+    document.getElementById("choose-weapon-btn").textContent = "Ready Your Weapons";
+    let monsterImage = document.getElementById("active-monster-img");
+    monsterImage.style.display = "";
 }
 
 /**
@@ -377,10 +391,11 @@ function displayRandomMonster() {
  * appropriate function, passing it the 'weapon' string.
  */
 function resolveBattle(weapon) {
-    let weaponsList = document.getElementById("weapons-list");
-    weaponsList.style.display = "none";
-    let monsterImage = document.getElementById("active-monster-img");
-    monsterImage.style.display = "";
+    // let weaponsList = document.getElementById("weapons-list");
+    // weaponsList.style.display = "none";
+    // let monsterImage = document.getElementById("active-monster-img");
+    // monsterImage.style.display = "";
+    hideWeapons();
 
     let weaknesses = getActiveMonster().weaknesses;
     
