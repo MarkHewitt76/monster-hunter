@@ -285,6 +285,8 @@ function storeUsername() {
         input.value = "";
         input.placeholder = "Name entered. Thanks!";
     }
+
+    document.getElementById("name-entry").style.display = "";
 }
 
 /**
