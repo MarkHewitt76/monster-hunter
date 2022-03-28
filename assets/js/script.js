@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
             if (this.id === "game-page-link") {
                 window.location.href = "game.html";
             }
-            /* Toggle the monster gallery or game rules and
-               change the button text */ 
+            /* Toggle display of the monster gallery or game 
+               rules and change the button text */ 
             else if (this.textContent === "Meet the Monsters") {
                 displayAllMonsters();
                 this.textContent = "Hide the Monsters";
@@ -342,7 +342,9 @@ function displayRandomMonster() {
 }
 
 /**
- * Hides the active monster image and displays the weapon buttons.
+ * Hides the active monster image, displays the weapon 
+ * buttons and changes the text of the 'choose weapon' 
+ * button.
  */
  function displayWeapons() {
     let monsterImage = document.getElementById("active-monster-img");
@@ -352,6 +354,11 @@ function displayRandomMonster() {
     document.getElementById("choose-weapon-btn").textContent = "Choose Your Weapon";
 }
 
+/**
+ * Hides weapon buttons, displays the active monster 
+ * image and changes the text of the 'choose weapon' 
+ * button.
+ */
 function hideWeapons() {
     let weaponsList = document.getElementById("weapons-list");
     weaponsList.style.display = "none";
@@ -383,18 +390,14 @@ function hideWeapons() {
 }
 
 /**
- * Hides the weapons buttons and removes 'display: none;' 
- * from the active monster image in case it's needed.
+ * Calls hideWeapons() to hide the weapons buttons and remove 
+ * 'display: none; from the active monster image in case it's needed.
  * Gets the active monster's weaknesses from getActiveMonster(),
  * compares them with the 'weapon' string passed in by the 
  * 'click' event listener on the weapons buttons and calls the 
  * appropriate function, passing it the 'weapon' string.
  */
 function resolveBattle(weapon) {
-    // let weaponsList = document.getElementById("weapons-list");
-    // weaponsList.style.display = "none";
-    // let monsterImage = document.getElementById("active-monster-img");
-    // monsterImage.style.display = "";
     hideWeapons();
 
     let weaknesses = getActiveMonster().weaknesses;
