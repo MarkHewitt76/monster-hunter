@@ -417,7 +417,7 @@ footer {
     transition: all 0.25s;
 }
 
-.weapon p {
+.weapon span {
     width: 250px;
     font-size: 1.25rem;
     text-align: center;
