@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // -------- Homepage click events
             // Go to game page
             if (this.id === "game-page-link") {
-                window.open('/game.html', '_self');
+                window.location.href = "game.html";
             }
             /* Toggle the monster gallery or game rules and
                change the button text */ 
@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
             // --------- Game page click events
             // Return to the Homepage
             else if (this.id === "back-btn" || this.id === "quit-btn") {
-                // window.open('/index.html', '_self');
                 window.location.href = "index.html";
             }
             // Start the game
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
                    array EXACTLY */
                 let weapon = this.innerText;
                 resolveBattle(weapon);
-                window.location.href="#game-header"
+                window.location.href="#game-header";
             }
         });
     }

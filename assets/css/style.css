@@ -183,30 +183,40 @@ footer {
     animation-delay: 20ms;
 }
 
-#rules ul, #rules ol {
+#rules ul {
     text-align: center;
 }
 
-#rules ul li {
+#rules ul li:not(#rules ol li) {
     padding: 5px;
     margin: 5px;
 }
 
-#rules ol li {
-    padding: 2.5px;
-    margin: 0;
-}
-
 .rules-weapon-img {
-    width: 100%;
+    /* margin-top: 5px; */
+    text-align: center;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
+.rules-weapon-img li {
+    display: flex;
+    flex-direction: column;
+}
+
+.rules-weapon-img figure {
+    width: 100px;
+    margin: 2.5px;
+}
+
+.rules-weapon-img figcaption {
+    margin: 5px 0;
+    height: 50px;
+}
+
 .rules-weapon-img img {
     height: 75px;
-    margin: 2.5px;
 }
 
 #rules h2:last-of-type {
@@ -386,12 +396,6 @@ footer {
     animation-delay: 0.5ms;
 }
 
-/* #weapons-list a:focus {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 5px -1px;
-    transition: all 0.25s;
-} */
-
 .weapon {
     margin: 2.5px 10px;
     width: 300px;
@@ -470,11 +474,6 @@ footer {
     /* buttons */
     #landing-btns, .arena-btns {
         flex-direction: column;
-    }
-
-    /* rules section */
-    .rules-weapon-img img {
-        height: 42.5px;
     }
 
     /* main game section */
