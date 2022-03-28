@@ -52,11 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (this.id === "new-game-btn") {
                 newGame();
             } else { // it's a weapon button
-                /* innerText is used here because it's imperative for
-                   the proper functioning of resolveBattle() that the
-                   returned string matches the values in the weaknesses 
-                   array EXACTLY */
-                let weapon = this.innerText;
+                let weapon = this.children[0].textContent;
+                console.log(weapon);
                 resolveBattle(weapon);
                 window.location.href="#game-header";
             }
