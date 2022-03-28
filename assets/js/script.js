@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // --------- Game page click events
             // Enter an optional username
             else if (this.id === "submit-name") {
-                getUsername();
+                storeUsername();
             }
             // Return to the Homepage
             else if (this.id === "back-btn" || this.id === "quit-btn") {
@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 newGame();
             } else { // it's a weapon button
                 let weapon = this.children[0].textContent;
-                console.log(weapon);
                 resolveBattle(weapon);
                 window.location.href="#game-header";
             }
@@ -67,11 +66,14 @@ document.addEventListener("DOMContentLoaded", function() {
     /* Add a listener to the 'Enter Your First Name' input 
        box and call getUsername() if the 'Enter' key is 
        pressed. Use both .key and .code for cross-browser
-       compatability. */
+       compatability. (There was initially an issue with this 
+       when navigating back to the homepage. Because the button's 
+       not on that page, this threw a 'Cannot read property 
+       'addEventListener' of null...' error. I found the solution of using 'username &&...' on StackOverflow, here: https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null) */
     let username = document.getElementById("username");
-    username.addEventListener("keydown", function(event) {
+    username && username.addEventListener("keydown", function(event) {
         if ((event.key === "Enter") || (event.code === "Enter")) {
-            getUsername();
+            storeUsername();
         }
     })
 });
@@ -274,11 +276,15 @@ function hideMainDivs() {
  * Gets the name inputted by the user, if any, and writes
  * it to the DOM as temporary storage.
  */
-function getUsername() {
-    let username = document.getElementById("username").value;
-    document.getElementById("added-name").innerHTML = `${username}`;
-    console.log(username);
-    console.log(document.getElementById("added-name").textContent);   
+function storeUsername() {
+    let input = document.getElementById("username");
+    let username = input.value;
+    document.getElementById("added-name").textContent = username;
+
+    if (input.value !== "") {
+        input.value = "";
+        input.placeholder = "Name entered. Thanks!";
+    }
 }
 
 /**
@@ -340,8 +346,10 @@ function getRandomMonster() {
 
 /**
  * Sets the initial state for the attacks counter.
+ * Gets the current user's name from the DOM.
  * Takes the monster object returned by getRandomMonster()
- * and writes its relevant values to the DOM.
+ * and writes its relevant values to the DOM along with 
+ * the current user's name, if any.
  */
 function displayRandomMonster() {
     hideMutableElements();
@@ -350,13 +358,21 @@ function displayRandomMonster() {
     document.getElementById("attacks").textContent = "3";
     
     let monster = getRandomMonster();
-
     let monsterName = monster.name;
+
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = currentName + " is";
+    } else {
+        activeName = "You are";
+    }
+    
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    You are hunting the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster!
+    <span id="active-username" class="active-username-style">${activeName}</span> hunting the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster!
     `;
-
+    
     let image = document.getElementById("active-monster-img");
     image.innerHTML = `
     <img src="${monster.image}" alt="A drawing of the ${monster.name} monster by ${monster.designer}">
@@ -471,14 +487,24 @@ function displayFailureMessage(weapon) {
 /**
  * Displays the outcome of the user's first failed attempt:
  * a warning message which includes the selected weapon's
- * name and the name of the currently active monster (read 
+ * name. It also includes the current user's name, if entered, 
+ * and the name of the currently active monster (both read 
  * from the DOM). Enlarges the image of the active monster.
  */
 function failureMessage1(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
+
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = ", " + currentName;
+    } else {
+        activeName = "";
+    }
+
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster is now hunting you!
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster is now hunting you<span id="active-username" class="active-username-style">${activeName}</span>!
     `;
 
     let image = document.getElementById("active-monster-img").children[0];
@@ -488,14 +514,24 @@ function failureMessage1(weapon) {
 /**
  * Displays the outcome of the user's second failed attempt:
  * a new warning message which includes the selected weapon's 
- * name and the name of the currently active monster (read 
+ * name. It also includes the current user's name, if entered, 
+ * and the name of the currently active monster (both read 
  * from the DOM). Enlarges the image of the active monster.
  */
 function failureMessage2(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
+
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = ", " + currentName;
+    } else {
+        activeName = "";
+    }
+
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster almost had you that time!
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster almost had you that time<span id="active-username" class="active-username-style">${activeName}</span>!!
     `;
 
     let image = document.getElementById("active-monster-img").children[0];
@@ -505,15 +541,26 @@ function failureMessage2(weapon) {
 /**
  * Hides the main game area and displays a commiseration 
  * message and animated gif upon losing the game. The 
- * message includes the selected weapon's name and the 
- * name of the currently active monster (read from the DOM).
- * Switches the 'New Monster' button for the 'New Game' button.
+ * message includes the selected weapon's name. It also 
+ * includes the current user's name, if entered, and 
+ * the name of the currently active monster (both read 
+ * from the DOM). Switches the 'New Monster' button for 
+ * the 'New Game' button.
  */
 function defeatMessage(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
+
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = ", " + currentName;
+    } else {
+        activeName = "";
+    }
+    
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time!
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> HAD NO EFFECT! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster took one last swipe at you before escaping. Better luck next time<span id="active-username" class="active-username-style">${activeName}</span>!
     `;
 
     hideMutableElements();
@@ -550,15 +597,26 @@ function displayWinMessage(weapon) {
 /**
  * Hides the main game area and displays a congratulatory
  * message and animated gif upon passing level 1. The 
- * message includes the selected weapon's name and the 
- * name of the currently active monster (read from the DOM).
- * Reveals the 'Next Level' button for the user to progress.
+ * message includes the selected weapon's name. It also 
+ * includes the current user's name, if entered, and 
+ * the name of the currently active monster (both read 
+ * from the DOM).Reveals the 'Next Level' button for the 
+ * user to progress.
  */
 function winMessage1(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
+
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = ", " + currentName;
+    } else {
+        activeName = "";
+    }
+
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> WORKED! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster didn't stand a chance! Are you ready for the next one?
+    THE <span id="weapon-name" class="weapon-name-style">${weapon}</span> WORKED! The <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster didn't stand a chance against you<span id="active-username" class="active-username-style">${activeName}</span>! Are you ready for the next one?
     `;
 
     hideMutableElements();
@@ -575,15 +633,26 @@ function winMessage1(weapon) {
 /**
  * Hides the main game area and displays a congratulatory
  * message and animated gif upon passing level 2. The 
- * message includes the selected weapon's name and the 
- * name of the currently active monster (read from the DOM).
- * Reveals the 'Next Level' button for the user to progress.
+ * message includes the selected weapon's name. It also 
+ * includes the current user's name, if entered, and 
+ * the name of the currently active monster (both read 
+ * from the DOM). Reveals the 'Next Level' button for the 
+ * user to progress.
  */
 function winMessage2(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
+    
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = ", " + currentName;
+    } else {
+        activeName = "";
+    }
+
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    YEAH! Way to handle that <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster. Good choice with the <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Are you up to taking on one more?
+    YEAH! Way to handle that <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster<span id="active-username" class="active-username-style">${activeName}</span>. Good choice with the <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Are you up to taking on one more?
     `;
 
     hideMutableElements();
@@ -600,16 +669,26 @@ function winMessage2(weapon) {
 /**
  * Hides the main game area and displays a congratulatory
  * message and animated gif upon finishing the game. The 
- * message includes the selected weapon's name and the 
- * name of the currently active monster (read from the 
- * DOM). Switches the 'New Monster' button for the 'New 
- * Game' button.
+ * message includes the selected weapon's name. It also 
+ * includes the current user's name, if entered, and 
+ * the name of the currently active monster (both read 
+ * from the DOM). Switches the 'New Monster' button for the 
+ * 'New Game' button.
  */
 function victoryMessage(weapon) {
     let monsterName = document.getElementById("active-monster-name").innerHTML;
+
+    let activeName;
+    let currentName = document.getElementById("added-name").textContent;
+    if (currentName !== "") {
+        activeName = ", " + currentName;
+    } else {
+        activeName = "";
+    }
+
     let message = document.getElementById("arena-message").children[0];
     message.innerHTML = `
-    YEEEEESSSSS! YOU DID IT!! Even the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Congratulations on a perfect hunt!
+    YEEEEESSSSS! YOU DID IT!! Even the <span id="active-monster-name" class="monster-name-style">${monsterName}</span> monster was no match for you. You sure know how to handle that <span id="weapon-name" class="weapon-name-style">${weapon}</span>! Congratulations<span id="active-username" class="active-username-style">${activeName}</span>, on a perfect hunt!
     `;
 
     hideMutableElements();
