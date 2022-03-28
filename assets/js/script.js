@@ -1,18 +1,47 @@
 // Wait for the DOM to finish loading before running
-// Get the elements with a class of "btn" & add event listeners to them
 document.addEventListener("DOMContentLoaded", function() {
     hideMutableElements();
-    let buttons = document.getElementsByClassName("event-btn");
+    // Get the elements with a class of "btn" & add event listeners to them
+    let buttons = document.getElementsByClassName("btn");
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
-            if ((this.id === "game-start") || (this.id === "next-level-btn")) {
-                startGame();
-            } else if (this.id === "monsters-btn") {
+            // -------- Homepage click events
+            // Go to game page
+            if (this.id === "game-page-link") {
+                window.open('/game.html', '_self');
+            }
+            /* Toggle the monster gallery or game rules and
+               change the button text */ 
+            else if (this.textContent === "Meet the Monsters") {
                 displayAllMonsters();
-            } else if (this.id === "rules-btn") {
+                this.textContent = "Hide the Monsters";
+                document.getElementById("rules-btn").textContent = "Read the Rules";
+            } else if (this.textContent === "Hide the Monsters") {
+                hideMutableElements();
+                this.textContent = "Meet the Monsters";
+                document.getElementById("rules-btn").textContent = "Read the Rules";
+            } else if (this.textContent === "Read the Rules") {
                 displayRules();
-            } else if (this.id === "new-monster-btn") {
+                this.textContent = "Hide the Rules";
+                document.getElementById("monsters-btn").textContent = "Meet the Monsters";
+            } else if (this.textContent === "Hide the Rules") {
+                hideMutableElements();
+                this.textContent = "Read the Rules";
+                document.getElementById("monsters-btn").textContent = "Meet the Monsters";
+            }
+            // --------- Game page click events
+            // Return to the Homepage
+            else if (this.id === "back-btn" || this.id === "quit-btn") {
+                // window.open('/index.html', '_self');
+                window.location.href = "index.html";
+            }
+            // Start the game
+            else if (this.id === "game-start" || this.id === "next-level-btn") {
+                startGame();
+            }
+            // In-game actions
+            else if (this.id === "new-monster-btn") {
                 displayRandomMonster();
             } else if (this.id === "choose-weapon-btn") {
                 displayWeapons();
@@ -25,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                    array EXACTLY */
                 let weapon = this.innerText;
                 resolveBattle(weapon);
+                window.location.href="#game-header"
             }
         });
     }
@@ -412,7 +442,7 @@ function failureMessage1(weapon) {
     `;
 
     let image = document.getElementById("active-monster-img").children[0];
-    image.style.width = "200px";
+    image.style.height = "200px";
 }
 
 /**
@@ -429,7 +459,7 @@ function failureMessage2(weapon) {
     `;
 
     let image = document.getElementById("active-monster-img").children[0];
-    image.style.width = "250px";
+    image.style.height = "250px";
 }
 
 /**

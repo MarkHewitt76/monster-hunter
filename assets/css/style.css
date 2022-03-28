@@ -36,12 +36,6 @@ li {
     list-style: none;
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-    text-align: center;
-}
-
 footer {
     text-align: center;
     margin: 150px 20px 10px;
@@ -74,7 +68,7 @@ footer {
     line-height: 100%;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover {
     cursor: pointer;
     transform: translateY(-5px);
     box-shadow: 0 5px 5px -1px;
@@ -102,9 +96,9 @@ footer {
     transition: all 0.25s ;
 }
 
-.link-btn {
+/* .link-btn {
     line-height: 150%;
-}
+} */
 
 /* landing area styles */
 
@@ -193,13 +187,14 @@ footer {
     text-align: center;
 }
 
-#rules li:not(#rules ol li) {
+#rules ul li {
     padding: 5px;
     margin: 5px;
 }
 
 #rules ol li {
     padding: 2.5px;
+    margin: 0;
 }
 
 .rules-weapon-img {
@@ -258,7 +253,7 @@ footer {
     height: 50px;
 }
 
-#go-back {
+#back-btn {
     margin-top: 20px;
     height: 30px;
     display: block;
@@ -345,14 +340,14 @@ footer {
 #active-monster-img {
     margin: 10px 0;
     width: 300px;
-    height: 320px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #active-monster-img img {
-    width: 150px;
+    height: 150px;
     opacity: 0;
     animation-name: fade-in;
     animation-duration: 0.5s;
@@ -391,6 +386,12 @@ footer {
     animation-delay: 0.5ms;
 }
 
+/* #weapons-list a:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s;
+} */
+
 .weapon {
     margin: 2.5px 10px;
     width: 300px;
@@ -402,6 +403,12 @@ footer {
     animation-duration: 0.25s;
     animation-fill-mode: forwards;
     animation-delay: 1ms;
+}
+
+.weapon:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s;
 }
 
 .weapon p {

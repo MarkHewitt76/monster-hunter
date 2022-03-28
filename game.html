@@ -24,10 +24,8 @@
         <!-- game page landing section -->
         <div id="game-landing" class="mutable">
             <h3>Welcome to the hunt!</h3>
-            <button id="game-start" class="btn start-btn event-btn">Let's find a MONSTER</button>
-            <a href="index.html">
-                <div id="go-back" class="btn">Turn Back</div>
-            </a>
+            <button id="game-start" class="btn start-btn">Let's find a MONSTER</button>
+            <button id="back-btn" class="btn" role="link">Turn Back</button>
         </div>
 
         <!-- main game section -->
@@ -35,12 +33,10 @@
 
             <!-- restart, next level and quit buttons -->
             <div class="arena-btns">
-                <button id="new-game-btn" class="btn event-btn mutable-element" style="display: none;">New Game</button>
-                <button id="new-monster-btn" class="btn event-btn">New Monster</button>
-                <button id="next-level-btn" class="btn event-btn mutable-element">Next Level</button>
-                <a href="index.html">
-                    <div id="quit-btn" class="btn link-btn">Quit</div>
-                </a>
+                <button id="new-game-btn" class="btn mutable-element" style="display: none;">New Game</button>
+                <button id="new-monster-btn" class="btn">New Monster</button>
+                <button id="next-level-btn" class="btn mutable-element">Next Level</button>
+                <button id="quit-btn" class="btn" role="link">Quit</button>
             </div>
 
             <!-- score area -->
@@ -59,70 +55,50 @@
 
                 <!-- choose weapon button -->
                 <div class="arena-btns">
-                    <button id="choose-weapon-btn" class="btn event-btn">Choose Your Weapon</button>
+                    <button id="choose-weapon-btn" class="btn">Choose Your Weapon</button>
                 </div>
                 <!-- weapons buttons -->
                 <div id="weapons-list" class="arena-box mutable-element" style="display: none;">
-                    <a href="#game-header">
-                        <div id="dagger" class="weapon btn event-btn">
-                            <p>Dagger</p>
-                            <img src="assets/images/dagger.jpg" alt="Drawing of a dagger by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="sword" class="weapon btn event-btn">
-                            <p>Sword</p>
-                            <img src="assets/images/sword.jpg" alt="Drawing of a sword by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">    
-                        <div id="axe" class="weapon btn event-btn">
-                            <p>Axe</p>
-                            <img src="assets/images/axe.jpg" alt="Drawing of an axe by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="bow-arrow" class="weapon btn event-btn">
-                            <p>Bow &amp; Arrow</p>
-                            <img src="assets/images/bow_arrow.jpg" alt="Drawing of a bow and arrow by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="ice-arrow" class="weapon btn event-btn">
-                            <p>Ice-Tipped Arrow</p>
-                            <img src="assets/images/ice_arrow.jpg" alt="Drawing of an ice-tipped arrow by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="poison-blade" class="weapon btn event-btn">
-                            <p>Poisoned Blade</p>
-                            <img src="assets/images/poison_blade.jpg" alt="Drawing of a poisoned blade by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="flame-axe" class="weapon btn event-btn">
-                            <p>Flame Axe</p>
-                            <img src="assets/images/flame_axe.jpg" alt="Drawing of a flame axe by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="pistol" class="weapon btn event-btn">
-                            <p>Pistol</p>
-                            <img src="assets/images/pistol.jpg" alt="Drawing of a   pistol by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="smg" class="weapon btn event-btn">
-                            <p>Sub-Machine Gun</p>
-                            <img src="assets/images/smg.jpg" alt="Drawing of a sub-machine gun by Nathan">
-                        </div>
-                    </a>
-                    <a href="#game-header">
-                        <div id="shotgun" class="weapon btn event-btn">
-                            <p>Shotgun</p>
-                            <img src="assets/images/shotgun.jpg" alt="Drawing of a shotgun by Nathan">
-                        </div>
-                    </a>
+                    <button id="dagger" class="weapon btn">
+                        <p>Dagger</p>
+                        <img src="assets/images/dagger.jpg" alt="Drawing of a dagger by Nathan">
+                    </button>
+                    <button id="sword" class="weapon btn">
+                        <p>Sword</p>
+                        <img src="assets/images/sword.jpg" alt="Drawing of a sword by Nathan">
+                    </button>
+                    <button id="axe" class="weapon btn">
+                        <p>Axe</p>
+                        <img src="assets/images/axe.jpg" alt="Drawing of an axe by Nathan">
+                    </button>
+                    <button id="bow-arrow" class="weapon btn">
+                        <p>Bow &amp; Arrow</p>
+                        <img src="assets/images/bow_arrow.jpg" alt="Drawing of a bow and arrow by Nathan">
+                    </button>
+                    <button id="ice-arrow" class="weapon btn">
+                        <p>Ice-Tipped Arrow</p>
+                        <img src="assets/images/ice_arrow.jpg" alt="Drawing of an ice-tipped arrow by Nathan">
+                    </button>
+                    <button id="poison-blade" class="weapon btn">
+                        <p>Poisoned Blade</p>
+                        <img src="assets/images/poison_blade.jpg" alt="Drawing of a poisoned blade by Nathan">
+                    </button>
+                    <button id="flame-axe" class="weapon btn">
+                        <p>Flame Axe</p>
+                        <img src="assets/images/flame_axe.jpg" alt="Drawing of a flame axe by Nathan">
+                    </button>
+                    <button id="pistol" class="weapon btn">
+                        <p>Pistol</p>
+                        <img src="assets/images/pistol.jpg" alt="Drawing of a   pistol by Nathan">
+                    </button>
+                    <button id="smg" class="weapon btn">
+                        <p>Sub-Machine Gun</p>
+                        <img src="assets/images/smg.jpg" alt="Drawing of a sub-machine gun by Nathan">
+                    </button>
+                    <button id="shotgun" class="weapon btn">
+                        <p>Shotgun</p>
+                        <img src="assets/images/shotgun.jpg" alt="Drawing of a shotgun by Nathan">
+                    </button>
                 </div>
 
                 <!-- active monster image container -->
