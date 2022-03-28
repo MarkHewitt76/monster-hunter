@@ -240,6 +240,37 @@ footer {
     align-items: center;
 }
 
+#username-prompt {
+    font-size: 1rem;
+}
+
+#username {
+    border: none;
+    padding: 2.5px;
+    height: 25px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #fff;
+    text-align: center;
+    color: #000;
+}
+
+#username:hover, #username:focus {
+    border: 2px solid #fff;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s ;
+}
+
+#submit-name {
+    height: 30px;
+    width: 100px;
+    margin-bottom: 20px;
+}
+
 /* main game section */
 
 #game-main {

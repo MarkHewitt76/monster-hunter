@@ -24,7 +24,11 @@
         <!-- game page landing section -->
         <div id="game-landing" class="mutable">
             <h3>Welcome to the hunt!</h3>
-            <button id="game-start" class="btn start-btn">Let's find a MONSTER</button>
+            <p id="username-prompt">Enter your First Name (optional)</p>
+            <input id="username" type="text" placeholder="First Name (optional)" aria-labelledby="username-prompt">
+            <button id="submit-name" class="btn">Enter</button>
+            <span id="added-name"></span>
+            <button id="game-start" class="btn start-btn">Find a MONSTER</button>
             <nav>
                 <button id="back-btn" class="btn" role="link">Turn Back</button>
             </nav>

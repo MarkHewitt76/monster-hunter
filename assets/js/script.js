@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("monsters-btn").textContent = "Meet the Monsters";
             }
             // --------- Game page click events
+            // Enter an optional username
+            else if (this.id === "submit-name") {
+                getUsername();
+            }
             // Return to the Homepage
             else if (this.id === "back-btn" || this.id === "quit-btn") {
                 window.location.href = "index.html";
@@ -59,6 +63,17 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    /* Add a listener to the 'Enter Your First Name' input 
+       box and call getUsername() if the 'Enter' key is 
+       pressed. Use both .key and .code for cross-browser
+       compatability. */
+    let username = document.getElementById("username");
+    username.addEventListener("keydown", function(event) {
+        if ((event.key === "Enter") || (event.code === "Enter")) {
+            getUsername();
+        }
+    })
 });
 
 /**
@@ -253,6 +268,17 @@ function hideMainDivs() {
             mutableDiv.style.display = "none";
         }
     }
+}
+
+/**
+ * Gets the name inputted by the user, if any, and writes
+ * it to the DOM as temporary storage.
+ */
+function getUsername() {
+    let username = document.getElementById("username").value;
+    document.getElementById("added-name").innerHTML = `${username}`;
+    console.log(username);
+    console.log(document.getElementById("added-name").textContent);   
 }
 
 /**
