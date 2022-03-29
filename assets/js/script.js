@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
             else if (this.id === "new-monster-btn") {
                 displayRandomMonster();
             } else if (this.id === "choose-weapon-btn") {
+                window.location.href = "#score-area";
                 let buttonText = this.textContent;
                 if (buttonText === "Ready Your Weapons") {
                     displayWeapons();    
@@ -58,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
             } else { // it's a weapon button
                 let weapon = this.children[0].textContent;
                 resolveBattle(weapon);
-                window.location.href="#game-header";
             }
         });
     }
@@ -309,6 +309,7 @@ function startGame() {
 
     incrementLevel();
     displayRandomMonster();
+    window.location.href="#game-main";
 }
 
 /**
@@ -439,6 +440,7 @@ function hideWeapons() {
  * appropriate function, passing it the 'weapon' string.
  */
 function resolveBattle(weapon) {
+    window.location.href="#game-main";
     hideWeapons();
 
     let weaknesses = getActiveMonster().weaknesses;

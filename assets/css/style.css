@@ -36,6 +36,10 @@ li {
     list-style: none;
 }
 
+a {
+    color: #fff;
+}
+
 footer {
     text-align: center;
     margin: 150px 20px 10px;
@@ -217,6 +221,10 @@ footer {
 
 #rules h2:last-of-type {
     margin-bottom: 20px;
+}
+
+#rules a {
+    font-size: 1.25rem;
 }
 
 /* game page headings */
@@ -516,7 +524,15 @@ footer {
     }
 
     #level, #attacks {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    #arena-message {
+        font-size: 1rem;
+    }
+
+    #win-lose-img img {
+        max-height: 250px;
     }
 
     /* footer */
