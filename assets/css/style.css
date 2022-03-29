@@ -36,10 +36,6 @@ li {
     list-style: none;
 }
 
-a {
-    color: #fff;
-}
-
 footer {
     text-align: center;
     margin: 150px 20px 10px;
@@ -88,16 +84,26 @@ footer {
     color: #000;
 }
 
-.start-btn a {
-    color: #000;
-}
-
 .start-btn:hover, .start-btn:focus {
     border: 2px solid #4b4645;
     color: #4b4645;
     transform: translateY(-2.5px);
     box-shadow: 0 5px 5px -1px;
     transition: all 0.25s ;
+}
+
+a {
+    width: 150px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-size: 1.125rem;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
 }
 
 /* landing area headings */
@@ -221,10 +227,6 @@ footer {
 
 #rules h2:last-of-type {
     margin-bottom: 20px;
-}
-
-#rules a {
-    font-size: 1.25rem;
 }
 
 /* game page headings */
