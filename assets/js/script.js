@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
        compatability. (There was initially an issue with this 
        when navigating back to the homepage. Because the button's 
        not on that page, this threw a 'Cannot read property 
-       'addEventListener' of null...' error. I found the solution of using 'username &&...' on StackOverflow, here: https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null) */
+       'addEventListener' of null...' error. I found the solution of using 'username &&...' on StackOverflow, here: https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null). */
     let username = document.getElementById("username");
     username && username.addEventListener("keydown", function(event) {
         if ((event.key === "Enter") || (event.code === "Enter")) {
@@ -291,7 +291,7 @@ function storeUsername() {
 
 /**
  * The main game function, called by the click events 
- * on both the 'Let's Hunt!' and 'Next Level' buttons.
+ * on both the 'Find a Monster' and 'Next Level' buttons.
  * Sets the initial state for the attacks counter 
  * and increments the level counter each time it's 
  * called. Displays ONLY the main game section with a
@@ -454,19 +454,19 @@ function resolveBattle(weapon) {
 }
 
 /**
- * Reduces the number of remaining attacks by 1.
- */
-function decrementAttacks() {
-    let attacks = parseInt(document.getElementById("attacks").textContent);
-    document.getElementById("attacks").textContent = --attacks;
-}
-
-/**
  * Increases the current level by 1.
  */
 function incrementLevel() {
     let level = parseInt(document.getElementById("level").textContent);
     document.getElementById("level").textContent = ++level;
+}
+
+/**
+ * Reduces the number of remaining attacks by 1.
+ */
+function decrementAttacks() {
+    let attacks = parseInt(document.getElementById("attacks").textContent);
+    document.getElementById("attacks").textContent = --attacks;
 }
 
 /**
@@ -483,8 +483,8 @@ function displayFailureMessage(weapon) {
     } else if (attacks === "0") {
         defeatMessage(weapon);
     } else {
-        alert(`Error! Undefined number: ${attacks}. Please refresh the page.`);
-        throw `Error! Undefined number: ${attacks}. Aborting!`;
+        alert(`Error! Undefined number of attacks: ${attacks}. Please refresh the page.`);
+        throw `Error! Undefined number of attacks: ${attacks}. Aborting!`;
     }
 }
 
