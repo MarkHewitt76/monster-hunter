@@ -51,6 +51,20 @@ footer {
     animation-delay: 1s;
 }
 
+a {
+    width: 150px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-size: 1.125rem;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
 /* generic button styles */
 
 .btn {
@@ -68,7 +82,7 @@ footer {
     line-height: 100%;
 }
 
-.btn:hover {
+.btn:hover, a:hover {
     cursor: pointer;
     transform: translateY(-5px);
     box-shadow: 0 5px 5px -1px;
@@ -90,20 +104,6 @@ footer {
     transform: translateY(-2.5px);
     box-shadow: 0 5px 5px -1px;
     transition: all 0.25s ;
-}
-
-a {
-    width: 150px;
-    height: 40px;
-    margin: 5px;
-    padding: 5px;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    font-size: 1.125rem;
-    color: #fff;
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
 }
 
 /* landing area headings */
@@ -138,6 +138,12 @@ a {
 
 #monsters-btn, #rules-btn {
     font-size: 1rem;
+}
+
+#monsters-btn:focus, #rules-btn:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 5px -1px;
+    transition: all 0.25s ;
 }
 
 /* monster gallery */

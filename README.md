@@ -317,7 +317,7 @@ This website is responsive on all device sizes and the majority of features are 
 
     - The smaller, black button to the right (or on the bottom at smaller screen widths) toggles between the labels 'Read the Rules' and 'Hide the Rules' when clicked and displays or hides the game rules and Nathan's weapon drawings accordingly. It also toggles the label and action of the 'Meet the Monsters' button when necessary.  
 
-    - The toggle action of the buttons allows the user to tell at a glance which section is being displayed even when the full page is not visible on screen. They also each have a focus effect, with box shadow and a negative Y-axis transform, to highlight to the user which section is active. 
+    - The toggle action of the buttons allows the user to tell at a glance which section is being displayed even when the full page is not visible on screen.
 
     - Both the monster gallery and rules sections have a 'hash' link at the bottom, styled to resemble the black buttons, which will return the user to the top of the landing page.
 
@@ -351,7 +351,7 @@ This website is responsive on all device sizes and the majority of features are 
 
     The main reason, aside from consistency of style, for the almost exclusive use of buttons throughtout the site is to facilitate tab-and-enter keyboard navigation and operation, as well as most other assistive technologies. As the 'button' HTML element has built-in focus and activation properties, it can be accessed and activated almost as easily by keyboard, touchscreen, voice command, etc, as it can with a mouse or touchpad, without the need for 'keydown' event listeners or other extraneous code to give focus to interactive elements.
 
-    The button element also has a built-in focus effect which means that although all buttons on the site, for emphasis, have a hover effect with box shadow and a negative Y-axis transform, a similar focus effect was only necessary on those with a toggle function, as it would have been distracting otherwise.
+    The button element also has a built-in focus effect which means that although all buttons on the site, for emphasis, have a hover effect with box shadow and a negative Y-axis transform, a similar focus effect was only necessary on the 'Ready Your Weapons/Choose Your Weapons' button, as it would have been distracting otherwise.
 
     Also, as the entire website is only two pages wide and designed with fluid, intuitive navigation in mind, the use of anchor tags seemed unnecessary as all links on the site are internal. Hence, for consistency, buttons have been used as both page and 'hash' links via the JavaScript 'window.location.href' method, with a 'role = "link"' attribute added for ARIA compliance. Admittedly, this method does away with the ability to, for example, open a link in a new tab with a 'right-click' of the mouse, but it doesn't seem like that will be an issue on a website this small.
 
