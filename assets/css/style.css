@@ -140,12 +140,6 @@ a {
     font-size: 1rem;
 }
 
-#monsters-btn:focus, #rules-btn:focus {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 5px -1px;
-    transition: all 0.25s ;
-}
-
 /* monster gallery */
 
 #monster-gallery {

@@ -1,3 +1,5 @@
+/* This method of grouping event listeners was inspired by 
+the Code Institute 'Love Maths' walkthrough project*/
 // Wait for the DOM to finish loading before running
 document.addEventListener("DOMContentLoaded", function() {
     hideMutableElements();
@@ -258,21 +260,6 @@ function hideMutableElements() {
 }
 
 /**
- * Hides all elements with the class of "mutable" 
- * by setting their display properties to "none". 
- * Each function that calls it can then remove 
- * 'display: none;' from the relevant element(s).
- */
-function hideMainDivs() {
-    let hiddenDivs = document.getElementsByClassName("mutable");
-    for (let mutableDiv of hiddenDivs) {
-        if (mutableDiv.style.display !== "none") {
-            mutableDiv.style.display = "none";
-        }
-    }
-}
-
-/**
  * Gets the name inputted by the user, if any, and writes
  * it to the DOM as temporary storage.
  */
@@ -299,7 +286,7 @@ function storeUsername() {
  * displayRandomMonster().
  */
 function startGame() {
-    hideMainDivs();
+    document.getElementById("game-landing").style.display = "none";
     hideMutableElements();
 
     let mainGame = document.getElementById("game-main");
@@ -458,6 +445,11 @@ function resolveBattle(weapon) {
  */
 function incrementLevel() {
     let level = parseInt(document.getElementById("level").textContent);
+    /* The idea to put the '++' before the variable to be 
+    incremented so that it happens before it's written to 
+    the DOM came from the Code Institute 'Love Maths' 
+    walthrough project. The idea is repeated with '--' in 
+    decrementAttacks(), below. */
     document.getElementById("level").textContent = ++level;
 }
 
