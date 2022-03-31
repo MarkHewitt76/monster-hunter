@@ -120,6 +120,14 @@ a {
     color: #54E014;
 }
 
+/* intro section */
+
+#intro {
+    margin: 20px;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
 /* landing area buttons */
 
 #landing-btns {
