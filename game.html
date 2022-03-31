@@ -25,9 +25,11 @@
         <div id="game-landing" class="mutable">
             <h3>Welcome to the hunt!</h3>
             <p id="username-prompt">Enter your First Name (optional)</p>
-            <input id="username" type="text" placeholder="First Name (optional)" aria-labelledby="username-prompt">
+            <input id="username" type="text" placeholder="First Name (optional)" aria-labelledby="username-prompt" pattern="[\p{L}\p{M}]+" title="Enter your First Name only">
             <button id="submit-name" class="btn">Enter</button>
-            <p id="name-entry" style="display: none;">Ok, <span id="added-name"></span>...</p>
+            <div id="name-box">
+                <p id="name-entry" style="display: none;">Ok <span id="added-name"></span>...</p>
+            </div>
             <button id="game-start" class="btn start-btn">Find a MONSTER</button>
             <nav>
                 <button id="back-btn" class="btn" role="link">Turn Back</button>

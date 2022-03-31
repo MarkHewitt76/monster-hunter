@@ -258,6 +258,10 @@ a {
     align-items: center;
 }
 
+#game-landing h3 {
+    margin: 20px;
+}
+
 #username-prompt {
     font-size: 1rem;
 }
@@ -284,9 +288,15 @@ a {
 }
 
 #submit-name {
-    height: 30px;
+    height: 25px;
     width: 100px;
     margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 85%;
+}
+
+#name-box {
+    height: 30px;
 }
 
 /* main game section */
