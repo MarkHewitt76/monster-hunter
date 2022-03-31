@@ -290,12 +290,12 @@ else {
 
  - #### User Error
 
-    As the user interface for the game is almost entirely point-and-click/tab-and-enter, the possibility of user error is essentially zero. The sole user input is the option of entering their first name on the game page landing area. As it is optional and affects only what is displayed in the game feedback message, the need for any form of validation is basically redundant. However, to ensure consistency of style, the 'pattern' and 'title' attributes have been used to restrict the input value to upper- and lowercase letters without punctuation and to display a tooltip alert if an error is made. 
+    As the user interface for the game is almost entirely point-and-click/tab-and-enter, the possibility of user error is essentially zero. The sole user input is the option of entering their first name on the game page landing area. As it is optional and affects only what is displayed in the game feedback message, the need for any form of validation is basically redundant. However, to ensure consistency of style, the 'pattern' and 'title' attributes have been used to restrict the input value to upper- and lowercase letters in any language, including accents but without punctuation and to display a tooltip alert if an error is made. 
 
     For confirmation, the inputted text will appear directly above the 'Find a Monster' button upon being submitted, so that the user can see immediately what will appear as their name within the game. 
 
 ```html
-<input id="username" type="text" placeholder="First Name (optional)" aria-labelledby="username-prompt" pattern="[A-Za-z]+" title="Enter your First Name only">
+<input id="username" type="text" placeholder="First Name (optional)" aria-labelledby="username-prompt" pattern="[\p{L}\p{M}]+" title="Enter your First Name only">
 ```
 
 ## Features
@@ -617,7 +617,7 @@ This website is responsive on all device sizes and the majority of features are 
 
 #### Unfixed Bugs
 
-    None.
+    At 08:30 on March 31st 2022, I noticed that the pattern attribute, used for validation of the text input box on the game page landing section wasn't working and have been unable to find a fix at the time of writing.
 
 ## Deployment
 ---
