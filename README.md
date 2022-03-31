@@ -8,7 +8,7 @@ The rules of the game are simple. The player takes on the role of a monster hunt
 
 This website site aims to provide a fun, challenging game with increasing levels of difficulty and an element of chance, which tests the user's memory the more they play. Users of this site will also be entertained by the children's drawings of the fantasy, mythological and totally original monsters, which they will be able to view in a gallery, as well as by the humorous animated gifs that greet both successful and unsuccessful outcomes. The user can see drawings of the various weapons when they read the game rules and will have the option of entering their name at the beginning, which will then appear in the messages displayed at the end of every 'attack', providing a more personalised experience.
 
-![Homepage screenshot](/assets/images/screenshots/ "Homepage")
+![Homepage screenshot](/assets/images/screenshots/monster_hunter_home_scr.png "Homepage")
 
 The site can be viewed [here](https://markhewitt76.github.io/monster-hunter/).
 
@@ -321,11 +321,9 @@ This website is responsive on all device sizes and the majority of features are 
 
     - Both the monster gallery and rules sections have a 'hash' link at the bottom, styled to resemble the black buttons, which will return the user to the top of the landing page.
 
-    ![Landing page buttons screenshot](/assets/images/screenshots/ "Landing page buttons")
-    !['Meet the Monsters' button with gallery closed](/assets/images/screenshots/ "Meet the Monsters button with gallery closed")
-    !['Hide the Monsters' button with gallery open](/assets/images/screenshots/ "Hide the Monsters button with gallery open")
-    !['Read the Rules' button with section closed](/assets/images/screenshots/ "Read the Rules button with section closed")
-    !['Hide the Rules' button with section open](/assets/images/screenshots/ "Hide the Rules button with section open")
+    ![Landing page buttons screenshot](/assets/images/screenshots/monster_hunter_landing_btns_scr.png "Landing page buttons")
+    !['Hide the Monsters' button with gallery open](/assets/images/screenshots/monster_hunter_htm_btn_scr.png "Hide the Monsters button with gallery open")
+    !['Hide the Rules' button with section open](/assets/images/screenshots/monster_hunter_htr_btn_scr.png "Hide the Rules button with section open")
 
 - #### Navigation: Game Page Buttons
 
@@ -343,9 +341,9 @@ This website is responsive on all device sizes and the majority of features are 
 
         - When a weapon button is selected, the browser window rises back up so that the main game buttons are at the top of the screen.
 
-    ![Game Page Landing: Navigation buttons screenshot](/assets/images/screenshots/ "Game page landing navigation buttons")
-    ![Main Game Page: Quit button screenshot](/assets/images/screenshots/ "Main game page quit button")
-    ![Main Game Page: 'Ready Your Weapons' button screenshot](/assets/images/screenshots/ "Main game page Ready Your Weapons button")
+    ![Game Page Landing: Navigation buttons screenshot](/assets/images/screenshots/monster_hunter_game_landing_btns_scr.png "Game page landing navigation buttons")
+    ![Main Game Page: Quit button screenshot](/assets/images/screenshots/monster_hunter_quit_btn_scr.png "Main game page quit button")
+    ![Main Game Page: 'Ready Your Weapons' button screenshot](/assets/images/screenshots/monster_hunter_ready_w_btn_scr.png "Main game page Ready Your Weapons button")
 
 - #### Navigation: A Note on Style and Accessibility
 
@@ -355,7 +353,7 @@ This website is responsive on all device sizes and the majority of features are 
 
     Also, as the entire website is only two pages wide and designed with fluid, intuitive navigation in mind, the use of anchor tags seemed unnecessary as all links on the site are internal. Hence, for consistency, buttons have been used as both page and 'hash' links via the JavaScript 'window.location.href' method, with a 'role = "link"' attribute added for ARIA compliance. Admittedly, this method does away with the ability to, for example, open a link in a new tab with a 'right-click' of the mouse, but it doesn't seem like that will be an issue on a website this small.
 
-    ![Weapon button 'tab focus' effect screenshot](/assets/images/screenshots/ "Weapon button tab focus effect")
+    ![Weapon button 'tab focus' effect screenshot](/assets/images/screenshots/monster_hunter_choose_w_btn_focus_scr.png "Weapon button tab focus effect")
 
 - #### Homepage: Landing
 
@@ -369,19 +367,19 @@ This website is responsive on all device sizes and the majority of features are 
 
     - The Monster Gallery, when visible, allows the user to view all the weird names and wonderful drawings of the monsters created by Nathan and Caoimhin for the game. They are arranged by level and alphabetically by name.
 
-    ![Monster Gallery screenshot](/assets/images/screenshots/ "Monster gallery")
+    ![Monster Gallery screenshot](/assets/images/screenshots/monster_hunter_mtm_scr.png "Monster gallery")
 
 - #### Homepage: Game Rules
 
     - The Rules section, when visible, lets the user read the rules of the game in an orderly list, including a list of the available weapons accompanied by Nathan's designs.
 
-    ![Rules Section screenshot](/assets/images/screenshots/ "Rules section")
+    ![Rules Section screenshot](/assets/images/screenshots/monster_hunter_rtr_scr.png "Rules section")
 
 - #### Footer
 
     - The footer section, featured on both pages of the website, contains the design credit information and includes a copyright statement.
 
-    ![Footer screenshot](/assets/images/screenshots/ "Footer")
+    ![Footer screenshot](/assets/images/screenshots/monster_hunter_foot_scr.png "Footer")
 
 - #### Game Page: Landing
 
@@ -391,7 +389,7 @@ This website is responsive on all device sizes and the majority of features are 
 
     - This page is useful to both those who wish to have a more personalised experience in the game and those who merely wish to start playing immediately.
 
-    ![Game Page Landing screenshot](/assets/images/screenshots/ritualeffect_bandpage_responsive.png "Band page")
+    ![Game Page Landing screenshot](/assets/images/screenshots/monster_hunter_game_landing_scr.png "Game page landing")
 
 - #### Main Game Section
 
@@ -424,9 +422,10 @@ This website is responsive on all device sizes and the majority of features are 
 
     - As a responsive design feature, the main game buttons change from inline to a block display on screens less than 640 pixels wide, with the 'New Monster' button on top and the 'Quit' button on the bottom.
 
-    ![Main Game Section: Gameplay screenshot](/assets/images/screenshots/ "Main game section - gameplay")
-    ![Main Game Section: Win Message screenshot](/assets/images/screenshots/ "Main game section - win message")
-    ![Main Game Section: Defeat Message screenshot](/assets/images/screenshots/ "Main game section - defeat message")
+    ![Main Game Section: Gameplay screenshot](/assets/images/screenshots/monster_hunter_game_main_scr.png "Main game section - gameplay")
+    ![Main Game Section: Weapons List screenshot](/assets/images/screenshots/monster_hunter_weapons_scr.png "Main game section - weapons")
+    ![Main Game Section: Win Message screenshot](/assets/images/screenshots/monster_hunter_win_scr.png "Main game section - win message")
+    ![Main Game Section: Defeat Message screenshot](/assets/images/screenshots/monster_hunter_lose_scr.png "Main game section - defeat message")
 
 ### Features for Future Implementation
 
@@ -494,8 +493,8 @@ This website is responsive on all device sizes and the majority of features are 
 
     Every page was run through Lighthouse in devtools in order to confirm that the website is accsessible and easy to read.
 
-    ![Lighthouse: Home Page screenshot](/assets/images/screenshots/ "Lighthouse - Home Page")
-    ![Lighthouse: Game Page screenshot](/assets/images/screenshots/ "Lighthouse - Game Page")
+    ![Lighthouse: Home Page screenshot](/assets/images/screenshots/lighthouse_monster_hunter_homepage.png "Lighthouse - Home Page")
+    ![Lighthouse: Game Page screenshot](/assets/images/screenshots/lighthouse_monster_hunter_gamepage.png "Lighthouse - Game Page")
     
 ### Testing User Stories from User Experience (UX) Section
 

@@ -207,7 +207,6 @@ a {
 }
 
 .rules-weapon-img {
-    /* margin-top: 5px; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -487,7 +486,7 @@ a {
     justify-self: flex-end;
 }
 
-/* win / lose image section */
+/* win-lose image section */
 
 #win-lose-img {
     margin: 5px 10px;
